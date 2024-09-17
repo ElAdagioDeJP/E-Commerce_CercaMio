@@ -66,3 +66,5 @@ node server.js
 5. Abre un Pull Request.
 ## 📜 Licencia
 Consulta el archivo LICENSE para más detalles.
+<hr>
+<img src="https://definicion.de/wp-content/uploads/2008/04/economia-de-mercado.png">
