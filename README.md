@@ -27,11 +27,11 @@ Sigue estos pasos para configurar el proyecto por primera vez:
    git clone https://github.com/tuusuario/E-Commerce_CercaMio.git
 
 2. **Inicializa el entorno virtual y configura npm**:
-Navega al directorio frontend y ejecuta el script de configuración:
+   Navega al directorio frontend y ejecuta el script de configuración:
 
-cd frontend
-y dentro de la carpeta frontend abre el archivo setup.ps1 y correlo
-Este script creará el entorno virtual instalara el requirements.txt y lo activara ademas instalará todas las dependencias de npm.
+   cd frontend <br>
+   y dentro de la carpeta frontend *abre el archivo setup.ps1* y correlo <br>
+   Este script creará el entorno virtual instalara el requirements.txt y lo activara ademas instalará todas las dependencias de npm. <br>
 
 ## 🏃 Ejecución
 **Frontend**: Desde el directorio frontend, levanta el servidor de desarrollo de npm:
@@ -55,8 +55,5 @@ Para más información, contacta a juan.vargasr432@gmail.com.
 ¡Gracias por usar E-Commerce CercaMio! Esperamos que tengas una gran experiencia.
 
 
-Copiar
-
-Asegúrate de ajustar los detalles como enlaces al repositorio y direcciones de correo según las necesidades de tu proyecto.
 <hr>
 <img src="https://definicion.de/wp-content/uploads/2008/04/economia-de-mercado.png">
