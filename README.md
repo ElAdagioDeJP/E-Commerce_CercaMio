@@ -27,11 +27,10 @@ Sigue estos pasos para configurar el proyecto por primera vez:
    git clone https://github.com/tuusuario/E-Commerce_CercaMio.git
 
 2. **Inicializa el entorno virtual y configura npm**:
-   Navega al directorio frontend y ejecuta el script de configuración:
+   
+   Abre el proyecto y ejecuta el archivo setup.ps1 <br>
+   Esto hara que se te instalen todas las dependencia de python y node ademas de activarte el entorno virtual
 
-   cd frontend <br>
-   y dentro de la carpeta frontend *abre el archivo setup.ps1* y correlo <br>
-   Este script creará el entorno virtual instalara el requirements.txt y lo activara ademas instalará todas las dependencias de npm. <br>
 
 ## 🏃 Ejecución
 **Frontend**: Desde el directorio frontend, levanta el servidor de desarrollo de npm:
