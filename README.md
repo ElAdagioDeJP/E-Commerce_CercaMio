@@ -28,7 +28,9 @@ Sigue estos pasos para configurar el proyecto por primera vez:
 
 2. **Inicializa el entorno virtual y configura npm**:
    
-   Abre el proyecto y ejecuta el archivo setup.ps1 <br>
+   Abre el proyecto y asegurate que estas en el<br>
+   **cd E-commerce-CercaMio** <br>
+   ejecuta el archivo setup.ps1 <br>
    Esto hara que se te instalen todas las dependencia de python y node ademas de activarte el entorno virtual
 
 
