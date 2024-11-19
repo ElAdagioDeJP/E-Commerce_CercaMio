@@ -6,7 +6,7 @@ body {
   background-color: #FFFAF0;
 }
 .navbar {
-  background-color: #b39ddb; /* Violeta suave */
+  background-color: #1b3468; /* Violeta suave */
   color: #e3f2fd; /* Azul claro */
   display: flex;
   justify-content: space-between;
@@ -16,8 +16,9 @@ body {
 }
 
 .logo {
-  font-size: 1.5em;
-  font-weight: bold;
+  
+  width: 1/3px;
+  height: 70px;
 }
 
 /* Contenedor de enlaces */
@@ -50,7 +51,7 @@ body {
 
 /* Botón estilizado */
 .btn-primary {
-  background-color: #7e57c2; /* Violeta oscuro */
+  background-color: #b39ddb; /* Violeta oscuro */
   color: white;
   border: none;
   border-radius: 5px;
@@ -61,12 +62,12 @@ body {
 }
 
 .btn-primary:hover {
-  background-color: #5e35b1; /* Violeta más oscuro */
+  background-color: #ac1993; /* Violeta más oscuro */
   transform: scale(1.05); /* Efecto de aumento */
 }
 
 .btn-primary:active {
-  background-color: #4527a0; /* Violeta más intenso */
+  background-color: #ac1993; /* Violeta más intenso */
   transform: scale(1); /* Restablecer tamaño */
 }
 .main {
