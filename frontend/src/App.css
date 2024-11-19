@@ -1,5 +1,66 @@
-
-naV{
-  background-color: rgb(178, 0, 175);
-  height: 150px;
+/* Navbar Styling */
+.navbar {
+  background-color: #b39ddb; /* Violeta suave */
+  color: #e3f2fd; /* Azul claro */
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Alinea todo verticalmente al centro */
+  padding: 10px 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
+
+.logo {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+/* Contenedor de enlaces */
+.nav-links {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+  align-items: center; /* Asegura que los elementos dentro estén centrados */
+}
+
+/* Elementos de los enlaces */
+.nav-links li {
+  margin: 0 15px;
+  display: flex;
+  align-items: center; /* Centra verticalmente los elementos en cada <li> */
+}
+
+/* Estilo de los enlaces */
+.nav-links a {
+  text-decoration: none;
+  color: #e3f2fd; /* Azul claro */
+  font-size: 1em;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #bbdefb; /* Azul más claro al pasar el cursor */
+}
+
+/* Botón estilizado */
+.btn-primary {
+  background-color: #7e57c2; /* Violeta oscuro */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 16px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-primary:hover {
+  background-color: #5e35b1; /* Violeta más oscuro */
+  transform: scale(1.05); /* Efecto de aumento */
+}
+
+.btn-primary:active {
+  background-color: #4527a0; /* Violeta más intenso */
+  transform: scale(1); /* Restablecer tamaño */
+}
+

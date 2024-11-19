@@ -1,43 +1,43 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      {/*
       <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+        <nav className="navbar">
+          <div className="logo">CercaMio</div>
+          <ul className="nav-links">
+            <li>
+              <a href="#home">Inicio</a>
+            </li>
+            <li>
+              <a href="#about">Sobre mí</a>
+            </li>
+            <li>
+              <a href="#services">Servicios</a>
+            </li>
+            <li>
+              <button className="btn-primary">Iniciar</button>
+            </li>
+          </ul>
+        </nav>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+      <div className="main">
+        <main>
+          <h1>Bienvenido a mi sitio</h1>
+          <div className="rectangles-container">
+            {Array.from({ length: 8 }).map((_, index) => (
+              <div key={index} className="rectangle">
+                {Array.from({ length: 20 }).map((_, circleIndex) => (
+                  <div key={circleIndex} className="circle"></div>
+                ))}
+              </div>
+            ))}
+          </div>
+        </main>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    
-    */}  
-      <nav>
-        <h1>LaMAMADeJesus</h1>
-      </nav>
     </>
-  
-  )
-    
+  );
 }
 
-export default App
+export default App;
