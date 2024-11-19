@@ -64,3 +64,79 @@
   transform: scale(1); /* Restablecer tamaño */
 }
 
+/* Contenedor principal */
+.main {
+  padding: 20px;
+  text-align: center;
+}
+
+/* Contenedor de los rectángulos */
+.rectangles-container {
+  display: flex;
+  flex-direction: column; /* Los rectángulos estarán uno debajo del otro */
+  gap: 20px; /* Espaciado entre los rectángulos */
+  width: 100%; /* Ocupa todo el ancho */
+  align-items: center; /* Centra los rectángulos */
+}
+
+/* Rectángulos */
+.rectangle {
+  width: 100%; /* Ocupa todo el ancho disponible */
+  max-width: 1000px; /* Limita el ancho máximo del rectángulo */
+  height: 120px; /* Ajustamos la altura para que sea el doble del tamaño de los círculos */
+  background-color: #7e57c2; /* El color de fondo es el mismo que el de las anclas del nav */
+  display: flex;
+  justify-content: center; /* Centra el contenido */
+  align-items: center;
+  position: relative;
+  padding: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+  border-radius: 8px; /* Bordes redondeados */
+}
+
+/* Contenedor de los círculos */
+.circle-container {
+  display: flex;
+  justify-content: flex-start; /* Los círculos estarán alineados a la izquierda */
+  width: 80%; /* Ocupa el 80% del rectángulo */
+  overflow: hidden; /* Oculta los círculos que no están visibles */
+  position: relative; /* Necesario para el desplazamiento */
+}
+
+/* Los círculos */
+.circle-wrapper {
+  display: flex;
+  transition: transform 0.5s ease; /* Animación para mover la fila */
+}
+
+.circle {
+  width: 60px; /* Tamaño de los círculos */
+  height: 60px; /* Tamaño de los círculos */
+  background-color: #bbdefb;
+  border-radius: 50%;
+  margin-right: 15px; /* Espaciado entre los círculos */
+}
+
+/* Mover los círculos a la derecha cuando se da click en la flecha */
+.circle-wrapper.move-right {
+  transform: translateX(-50%); /* Mueve la fila hacia la izquierda para mostrar los últimos 10 círculos */
+}
+
+/* Botón de flecha horizontal */
+.toggle-btn {
+  position: absolute;
+  right: 10px;
+  top: 50%; /* Centrado verticalmente */
+  transform: translateY(-50%);
+  padding: 5px 10px;
+  background-color: #ffffff;
+  color: #7e57c2;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.toggle-btn:hover {
+  background-color: #f3f3f3;
+}
