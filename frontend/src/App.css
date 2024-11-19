@@ -1,4 +1,10 @@
 /* Navbar Styling */
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  padding: 0;
+  background-color: #FFFAF0;
+}
 .navbar {
   background-color: #b39ddb; /* Violeta suave */
   color: #e3f2fd; /* Azul claro */
@@ -63,8 +69,6 @@
   background-color: #4527a0; /* Violeta más intenso */
   transform: scale(1); /* Restablecer tamaño */
 }
-
-/* Contenedor principal */
 .main {
   padding: 20px;
   text-align: center;
@@ -82,9 +86,8 @@
 /* Rectángulos */
 .rectangle {
   width: 100%; /* Ocupa todo el ancho disponible */
-  max-width: 1000px; /* Limita el ancho máximo del rectángulo */
-  height: 120px; /* Ajustamos la altura para que sea el doble del tamaño de los círculos */
-  background-color: #7e57c2; /* El color de fondo es el mismo que el de las anclas del nav */
+  height: 200px; /* Ajustamos la altura para acomodar los cuadrados más grandes */
+  background-color: #b39ddb; /* El color de fondo es el mismo que el de las anclas del nav */
   display: flex;
   justify-content: center; /* Centra el contenido */
   align-items: center;
@@ -92,34 +95,61 @@
   padding: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra ligera */
   border-radius: 8px; /* Bordes redondeados */
+  flex-direction: column; /* Organiza el contenido en columna */
+  padding-top: 30px; /* Espacio para el título */
 }
 
-/* Contenedor de los círculos */
-.circle-container {
+/* Título en la parte superior izquierda */
+.rectangle-title {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 16px;
+  color: #ffffff;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+/* Contenedor de los cuadros */
+.square-container {
   display: flex;
-  justify-content: flex-start; /* Los círculos estarán alineados a la izquierda */
+  justify-content: flex-start; /* Los cuadros estarán alineados a la izquierda */
   width: 80%; /* Ocupa el 80% del rectángulo */
-  overflow: hidden; /* Oculta los círculos que no están visibles */
+  overflow: hidden; /* Oculta los cuadros que no están visibles */
   position: relative; /* Necesario para el desplazamiento */
 }
 
-/* Los círculos */
-.circle-wrapper {
+/* Los cuadros */
+.square-wrapper {
   display: flex;
   transition: transform 0.5s ease; /* Animación para mover la fila */
 }
 
-.circle {
-  width: 60px; /* Tamaño de los círculos */
-  height: 60px; /* Tamaño de los círculos */
-  background-color: #bbdefb;
-  border-radius: 50%;
-  margin-right: 15px; /* Espaciado entre los círculos */
+.square {
+  width: 150px; /* Tamaño más grande de los cuadrados */
+  height: 150px; /* Tamaño más grande de los cuadrados */
+  background-color: #FFFAF0;
+  margin-right: 15px; /* Espaciado entre los cuadrados */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px; /* Bordes redondeados para el cuadrado */
+  position: relative;
 }
 
-/* Mover los círculos a la derecha cuando se da click en la flecha */
-.circle-wrapper.move-right {
-  transform: translateX(-50%); /* Mueve la fila hacia la izquierda para mostrar los últimos 10 círculos */
+/* Contenedor del nombre y precio dentro del cuadrado */
+.square-content {
+  position: absolute;
+  bottom: 5px;
+  left: 5px;
+  color: white;
+  font-size: 14px;
+  text-align: center;
+}
+
+/* Mover los cuadrados a la derecha cuando se da click en la flecha */
+.square-wrapper.move-right {
+  transform: translateX(-50%); /* Mueve la fila hacia la izquierda para mostrar los últimos 10 cuadrados */
 }
 
 /* Botón de flecha horizontal */

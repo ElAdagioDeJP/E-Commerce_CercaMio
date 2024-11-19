@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import App from './App'
+import SesionUsuario from './SesionUsuario'; // Importamos el nuevo componente
 
 
 const router = createBrowserRouter([
@@ -10,6 +11,10 @@ const router = createBrowserRouter([
         element: <App />,
         
     },
+    {
+        path: '/sesion', // Nueva ruta
+        element: <SesionUsuario />, // Componente que se renderiza cuando se navega a '/sesion'
+      },
     /*
     {
         path: '/about',
