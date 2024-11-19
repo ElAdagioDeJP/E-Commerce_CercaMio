@@ -13,7 +13,7 @@ function App() {
     <>
       <div>
         <nav className="navbar">
-          <div className="logo">CercaMio</div>
+          <img src=".\image\logopsinf.webp" alt="Logo CercaMio" className="logo" />
           <ul className="nav-links">
             <li>
               <a href="#home">Inicio</a>
@@ -85,7 +85,7 @@ function Rectangle({ title }) {
       <div className="rectangle-title">{title}</div>
       <div className="square-container">
         <div className={`square-wrapper ${showMore ? 'move-right' : ''}`}>
-          {Array.from({ length: 17 }).map((_, squareIndex) => (
+          {Array.from({ length: 16 }).map((_, squareIndex) => (
             <div key={squareIndex} className="square">
               <div className="square-content">
                
