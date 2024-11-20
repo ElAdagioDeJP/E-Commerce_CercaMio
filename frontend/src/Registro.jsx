@@ -1,106 +1,105 @@
 import React, { useState } from 'react';
-import './Registro.css';
+import { useNavigate } from 'react-router-dom';
+import "./SesionUsuario.css";
 
-const Registro = () => {
+const RegistroUsuario = () => {
+  const navigate = useNavigate();
+
+  // Estados para manejar los datos del formulario
   const [formData, setFormData] = useState({
     nombre: '',
     email: '',
     password: '',
-    confirmPassword: '',
-    foto: null,
-    telefono: ''
+    confirmPassword: ''
   });
-  const [fotoPreview, setFotoPreview] = useState(null);
 
-  const handleChange = (e) => {
-    const { name, value, files } = e.target;
-    if (name === 'foto' && files.length > 0) {
-      const file = files[0];
-      setFormData({
-        ...formData,
-        [name]: file
-      });
-      setFotoPreview(URL.createObjectURL(file));
-    } else {
-      setFormData({
-        ...formData,
-        [name]: value
-      });
-    }
+  // Manejar cambios en los inputs
+  const handleInputChange = (e) => {
+    const { id, value } = e.target;
+    setFormData({ ...formData, [id]: value });
   };
 
-  const handleSubmit = (e) => {
+  // Manejar el envío del formulario
+  const handleRegisterClick = (e) => {
     e.preventDefault();
-    // Aquí puedes agregar la lógica para manejar el registro del usuario
-    console.log('Datos del formulario:', formData);
+
+    // Validación básica
+    if (!formData.nombre || !formData.email || !formData.password || !formData.confirmPassword) {
+      alert("Por favor, completa todos los campos.");
+      return;
+    }
+
+    if (formData.password !== formData.confirmPassword) {
+      alert("Las contraseñas no coinciden.");
+      return;
+    }
+
+    // Aquí podrías realizar una llamada al backend para registrar al usuario
+    console.log("Usuario registrado:", formData);
+
+    // Redirigir al inicio de sesión
+    navigate('/');
+  };
+
+  const handleBackClick = () => {
+    navigate('/');
   };
 
   return (
-    <div className="registro-container">
-      <h2>Formulario de Registro</h2>
-      <form action="/submit" method="post" onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="nombre">Nombre:</label>
+    <div className="login-container">
+      <div className="login-card">
+        <h1 className="login-title">Registro de Usuario</h1>
+        <form>
+          <label htmlFor="nombre" className="login-label">Nombre</label>
           <input
             type="text"
             id="nombre"
-            name="nombre"
+            className="login-input"
+            placeholder="Ingrese su nombre"
             value={formData.nombre}
-            onChange={handleChange}
-            required
+            onChange={handleInputChange}
           />
-        </div>
-        <div className="form-group">
-          <label htmlFor="email">Correo Electrónico:</label>
+
+          <label htmlFor="email" className="login-label">Correo Electrónico</label>
           <input
             type="email"
             id="email"
-            name="email"
+            className="login-input"
+            placeholder="Ingrese su correo"
             value={formData.email}
-            onChange={handleChange}
-            required
+            onChange={handleInputChange}
           />
-        </div>
-        <div className="form-group">
-          <label htmlFor="telefono">Número Telefónico:</label>
+
+          <label htmlFor="password" className="login-label">Contraseña</label>
           <input
-            type="tel"
-            id="telefono"
-            name="telefono"
-            value={formData.telefono}
-            onChange={handleChange}
-            pattern="[0-9]{10}"
-            required
+            type="password"
+            id="password"
+            className="login-input"
+            placeholder="Ingrese su contraseña"
+            value={formData.password}
+            onChange={handleInputChange}
           />
-        </div>
-        <label htmlFor="password">Contraseña</label>
-        <input
-          type="password"
-          id="password"
-          name="password"
-          value={formData.password}
-          onChange={handleChange}
-        />
-        <label htmlFor="confirmPassword">Confirmar Contraseña</label>
-        <input
-          type="password"
-          id="confirmPassword"
-          name="confirmPassword"
-          value={formData.confirmPassword}
-          onChange={handleChange}
-        />
-        <label htmlFor="foto">Foto</label>
-        <input
-          type="file"
-          id="foto"
-          name="foto"
-          onChange={handleChange}
-        />
-        {fotoPreview && <img src={fotoPreview} alt="Vista previa" className="foto-preview" />}
-        <button type="submit">Registrar</button>
-      </form>
+
+          <label htmlFor="confirmPassword" className="login-label">Confirmar Contraseña</label>
+          <input
+            type="password"
+            id="confirmPassword"
+            className="login-input"
+            placeholder="Confirme su contraseña"
+            value={formData.confirmPassword}
+            onChange={handleInputChange}
+          />
+
+          <button type="submit" className="login-button" onClick={handleRegisterClick}>
+            Registrarse
+          </button>
+          <button type="button" className="login-button" onClick={handleBackClick}>
+            Regresar
+          </button>
+        </form>
+      </div>
     </div>
   );
 };
 
-export default Registro;
+export default RegistroUsuario;
