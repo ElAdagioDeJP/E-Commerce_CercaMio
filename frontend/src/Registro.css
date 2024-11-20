@@ -1,0 +1,102 @@
+/* Archivo: Registro.css */
+
+.registro-container {
+    max-width: 400px;
+    margin: 1rem auto;
+    padding-top: 2px;
+    padding-bottom: 2px;
+
+    border: 1px solid #4A148C;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #7E57C2;
+    background-color: #F3E5F5; /* Fondo general */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+}
+
+.registro-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #4A148C;
+}
+
+.registro-container form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.registro-container label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #4A148C;
+}
+
+.registro-container input {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #4A148C;
+    border-radius: 5px;
+    padding: 8px;
+    width: 200px;
+    margin-bottom: 10px;
+}
+
+.registro-container input[type="file"] {
+    padding: 3px;
+}
+
+.registro-container button {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background: linear-gradient(45deg, #4A148C, #6A1B9A); /* Colores de ejemplo */
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 10px 20px;
+}
+
+.registro-container button:hover {
+    background: linear-gradient(45deg, #6A1B9A, #4A148C); /* Colores de ejemplo */
+}
+
+.foto-preview {
+    margin-top: 15px;
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+label {
+    margin-bottom: 5px;
+}
+
+input {
+    padding: 8px;
+    width: 200px;
+    margin-bottom: 10px;
+}
+
+button {
+    padding: 10px 20px;
+    cursor: pointer;
+}
