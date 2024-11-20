@@ -32,19 +32,22 @@
     color: #4A148C; /* Texto principal */
     font-weight: bold;
     margin-bottom: 0.5rem;
+
   }
   
   /* Inputs */
 .login-input {
-    width: 100%;
-    padding: 0.75rem;
-    margin-bottom: 1rem;
-    border: 1px solid #F8EAF6;
-    border-radius: 4px;
-    background-color: #F8EAF6; /* Fondo de los inputs */
-    font-size: 1rem;
-    color: #4A148C;
-  }
+  margin-bottom: 1rem;
+  display: block;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  width: 100%;
+  border: 1px solid #F8EAF6;
+  border-radius: 4px;
+  background-color: #F8EAF6; /* Fondo de los inputs */
+  font-size: 1rem;
+  color: #4A148C;
+}
   
   /* Button */
 .login-button {
@@ -57,6 +60,7 @@
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    margin: 1rem;
   }
   
 .login-button:hover {

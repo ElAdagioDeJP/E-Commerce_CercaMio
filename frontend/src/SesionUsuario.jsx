@@ -15,6 +15,7 @@ function SesionUsuario() {
           <input type="password" id="password" className="login-input" placeholder="Ingrese su contraseña" />
 
           <button type="submit" className="login-button">Ingresar</button>
+          <button type="button" className="login-button" onClick={() => window.history.back()}>Regresar</button>
         </form>
         <p className="login-footer">
           ¿No tienes una cuenta? <a href="/register" className="login-link">Regístrate</a>
