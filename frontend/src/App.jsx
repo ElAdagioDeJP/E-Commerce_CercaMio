@@ -1,7 +1,7 @@
 import './App.css';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
+ 
 function App() {
   const navigate = useNavigate(); // Usamos el hook para navegar
 
@@ -88,7 +88,7 @@ function Rectangle({ title }) {
           {Array.from({ length: 16 }).map((_, squareIndex) => (
             <div key={squareIndex} className="square">
               <div className="square-content">
-               
+                
               </div>
             </div>
           ))}
