@@ -1,0 +1,83 @@
+/* General Container */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #F3E5F5; /* Fondo general */
+    margin: 0;
+  }
+  
+  /* Card */
+.login-card {
+    background-color: #E1BEE7; /* Fondo del cuadro */
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  /* Title */
+.login-title {
+    color: #4A148C; /* Texto principal */
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Labels */
+.login-label {
+    display: block;
+    color: #4A148C; /* Texto principal */
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+  
+  /* Inputs */
+.login-input {
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border: 1px solid #F8EAF6;
+    border-radius: 4px;
+    background-color: #F8EAF6; /* Fondo de los inputs */
+    font-size: 1rem;
+    color: #4A148C;
+  }
+  
+  /* Button */
+.login-button {
+    background-color: #7E57C2; /* Fondo del botón */
+    color: #FFFFFF; /* Texto del botón */
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+.login-button:hover {
+    background-color: #6A1B9A; /* Hover del botón */
+  }
+  
+  /* Footer */
+.login-footer {
+    margin-top: 1rem;
+    color: #4A148C; /* Texto del pie */
+    font-size: 0.9rem;
+  }
+  
+.login-link {
+    color: #7E57C2; /* Color del enlace */
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+.login-link:hover {
+    text-decoration: underline;
+  }
+  
+  
