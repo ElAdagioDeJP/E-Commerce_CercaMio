@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import "./SesionUsuario.css";
+import Navbar from './Navbar'; // Aquí se importa el Navbar
 
 const RegistroUsuario = () => {
   const navigate = useNavigate();
@@ -46,57 +47,60 @@ const RegistroUsuario = () => {
   };
 
   return (
-    <div className="login-container">
-      <div className="login-card">
-        <h1 className="login-title">Registro de Usuario</h1>
-        <form>
-          <label htmlFor="nombre" className="login-label">Nombre</label>
-          <input
-            type="text"
-            id="nombre"
-            className="login-input"
-            placeholder="Ingrese su nombre"
-            value={formData.nombre}
-            onChange={handleInputChange}
-          />
+    <div>
 
-          <label htmlFor="email" className="login-label">Correo Electrónico</label>
-          <input
-            type="email"
-            id="email"
-            className="login-input"
-            placeholder="Ingrese su correo"
-            value={formData.email}
-            onChange={handleInputChange}
-          />
+      <Navbar /> {/* Aquí debe aparecer el Navbar */}
 
-          <label htmlFor="password" className="login-label">Contraseña</label>
-          <input
-            type="password"
-            id="password"
-            className="login-input"
-            placeholder="Ingrese su contraseña"
-            value={formData.password}
-            onChange={handleInputChange}
-          />
+      <div className="login-container">
+        <div className="login-card">
+          <h1 className="login-title">Registro de Usuario</h1>
+          <form>
+            <label htmlFor="nombre" className="login-label">Nombre</label>
+            <input
+              type="text"
+              id="nombre"
+              className="login-input"
+              placeholder="Ingrese su nombre"
+              value={formData.nombre}
+              onChange={handleInputChange}
+            />
 
-          <label htmlFor="confirmPassword" className="login-label">Confirmar Contraseña</label>
-          <input
-            type="password"
-            id="confirmPassword"
-            className="login-input"
-            placeholder="Confirme su contraseña"
-            value={formData.confirmPassword}
-            onChange={handleInputChange}
-          />
+            <label htmlFor="email" className="login-label">Correo Electrónico</label>
+            <input
+              type="email"
+              id="email"
+              className="login-input"
+              placeholder="Ingrese su correo"
+              value={formData.email}
+              onChange={handleInputChange}
+            />
 
-          <button type="submit" className="login-button" onClick={handleRegisterClick}>
-            Registrarse
-          </button>
-          <button type="button" className="login-button" onClick={handleBackClick}>
-            Regresar
-          </button>
-        </form>
+            <label htmlFor="password" className="login-label">Contraseña</label>
+            <input
+              type="password"
+              id="password"
+              className="login-input"
+              placeholder="Ingrese su contraseña"
+              value={formData.password}
+              onChange={handleInputChange}
+            />
+
+            <label htmlFor="confirmPassword" className="login-label">Confirmar Contraseña</label>
+            <input
+              type="password"
+              id="confirmPassword"
+              className="login-input"
+              placeholder="Confirme su contraseña"
+              value={formData.confirmPassword}
+              onChange={handleInputChange}
+            />
+
+            <button type="submit" className="login-button" onClick={handleRegisterClick}>
+              Registrarse
+            </button>
+           
+          </form>
+        </div>
       </div>
     </div>
   );
