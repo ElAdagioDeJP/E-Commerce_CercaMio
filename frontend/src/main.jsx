@@ -4,6 +4,7 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import App from './App'
 import SesionUsuario from './SesionUsuario'; // Importamos el nuevo componente
 import Registro from './Registro'; // Importamos el nuevo componente
+import Crearproductos from './Crearproductos';// Importamos el nuevo componente
 
 const router = createBrowserRouter([
     {
@@ -19,6 +20,11 @@ const router = createBrowserRouter([
         path: '/registro', // Nueva ruta
         element: <Registro />, // Componente que se renderiza cuando se navega a '/registro'
       },
+      {
+        path: '/crearproductos', // Nueva ruta para crear productos
+        element: <Crearproductos />, // Componente que se renderiza cuando se navega a '/crearproductos'
+    },
+
     /*
     {
         path: '/about',

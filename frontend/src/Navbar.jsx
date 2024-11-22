@@ -12,16 +12,17 @@ function Navbar() {
   const handleBackClick = () => {
     navigate('/');
   };
+  const handleRegisterProductClick = () => {
+    navigate('/Crearproductos');
+  }
 
   return (
     <nav className="navbar">
-      <img src=".\image\logopsinf.webp" alt="Logo CercaMio" className="logo" />
+      <img src=".\image\logopsinf.webp" alt="Logo CercaMio" className="logo" onClick={handleBackClick}/>
       <ul className="nav-links">
+        
         <li>
-          <a href="#home" onClick={handleBackClick}>Inicio</a>
-        </li>
-        <li>
-          <a href="#about">Sobre mí</a>
+          <a href="#about" onClick={handleRegisterProductClick}>Sobre mí</a>
         </li>
         <li>
           <a href="#services">Servicios</a>

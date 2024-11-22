@@ -13,7 +13,9 @@
   .logo {
     width: 150px; /* Ajusta según el tamaño de tu logo */
     height: 70px;
+    cursor: pointer;
   }
+ 
   
   
   /* Contenedor de enlaces */
