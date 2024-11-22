@@ -1,7 +1,7 @@
 import './App.css';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
- 
+
 function App() {
   const navigate = useNavigate(); // Usamos el hook para navegar
 
@@ -25,16 +25,53 @@ function App() {
               <a href="#services">Servicios</a>
             </li>
             <li>
-            <button className="btn-primary" onClick={handleClick}>
-              Iniciar Sesión
-            </button>
+              <button className="btn-primary" onClick={handleClick}>
+                Iniciar Sesión
+              </button>
             </li>
           </ul>
         </nav>
       </div>
+      <div className="background">
+
+      </div>
       <div className="main">
         <main>
-          <h1>Bienvenido a mi sitio</h1>
+          <div className="categorias">
+            <h2>Categorías</h2>
+            <ul>
+              <li>
+                <h3>Tecnología</h3>
+                <img src="/images/tecnologia.jpg" alt="Tecnología" />
+              </li>
+              <li>
+                <h3>Auto</h3>
+                <img src="/images/auto.jpg" alt="Auto" />
+              </li>
+              <li>
+                <h3>Hogar e Inmuebles</h3>
+                <img src="/images/hogar.jpg" alt="Hogar e Inmuebles" />
+              </li>
+              <li>
+                <h3>Alimentos</h3>
+                <img src="/images/alimentos.jpg" alt="Alimentos" />
+              </li>
+              <li>
+                <h3>Ropa</h3>
+                <img src="/images/ropa.jpg" alt="Ropa" />
+              </li>
+              <li>
+                <h3>Deportes</h3>
+                <img src="/images/deportes.jpg" alt="Deportes" />
+              </li>
+              <li>
+                <h3>Otros</h3>
+                <img src="/images/otros.jpg" alt="Otros" />
+              </li>
+            </ul>
+          </div>
+
+
           <div className="rectangles-container">
             {Array.from({ length: 10 }).map((_, index) => (
               <Rectangle key={index} title={getTitle(index)} />
@@ -88,7 +125,7 @@ function Rectangle({ title }) {
           {Array.from({ length: 16 }).map((_, squareIndex) => (
             <div key={squareIndex} className="square">
               <div className="square-content">
-                
+
               </div>
             </div>
           ))}

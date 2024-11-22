@@ -5,6 +5,16 @@ body {
   padding: 0;
   background-color: #FFFAF0;
 }
+.background {
+  background-image: url('./image/fondocercamio.webp'); /* Ruta relativa desde 'public' */
+  background-size: cover; /* Escala la imagen para cubrir todo el área */
+  background-position: center; /* Centra la imagen */
+  margin-top: 10px;
+  width: 100vw; /* Ocupa todo el ancho de la ventana */
+  height: 100vh; /* Ocupa todo el alto de la ventana */
+  
+}
+
 .navbar {
   background-color: #1b3468; /* Violeta suave */
   color: #e3f2fd; /* Azul claro */
@@ -74,6 +84,72 @@ body {
   padding: 20px;
   text-align: center;
 }
+
+.categorias {
+  background-color: #b39ddb;
+  width: 100%; /* Ocupa todo el ancho disponible */
+  height: auto; /* Ajusta automáticamente la altura al contenido */
+  border-radius: 8px; /* Bordes redondeados */
+  display: flex;
+
+  align-items: center; /* Centra el contenido horizontalmente */
+  gap: 20px; /* Espacio entre el h2 y las filas */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+  margin-bottom: 40px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.categorias h2 {
+  color: #ffffff;
+  font-size: 50px;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin: 10px;
+  
+  margin-bottom: 20px; /* Espaciado debajo del título */
+}
+
+.categorias ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  
+}
+
+.categorias li {
+  background-color: #f5f5f5; /* Fondo para cada categoría */
+  border-radius: 8px; /* Esquinas redondeadas */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para darle profundidad */
+  width: 200px; /* Ancho fijo para cada categoría */
+  height: 200px; /* Ajusta la altura según necesites */
+  text-align: center;
+  padding: 10px;
+  transition: transform 0.3s ease;
+}
+
+
+
+.categorias li:hover {
+  transform: translateY(-10px); /* Efecto al pasar el mouse */
+}
+
+.categorias h3 {
+  font-size: 18px;
+  color: #333;
+  margin: 10px 0;
+}
+
+.categorias img {
+  width: 100%; /* Ajusta la imagen al ancho del contenedor */
+  height: auto; /* Mantén la proporción de la imagen */
+  border-radius: 5px; /* Opcional: esquinas redondeadas */
+}
+
 
 /* Contenedor de los rectángulos */
 .rectangles-container {
