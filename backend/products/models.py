@@ -23,16 +23,22 @@ class Usuario(AbstractUser):
         verbose_name='permisos de usuario'
     )
 
+class Categoria(models.Model):
+    nombre = models.CharField(max_length=100)
+    descripcion = models.TextField(blank=True, null=True)
+
+    def __str__(self):
+        return self.nombre
+
 class Producto(models.Model):
     titulo = models.CharField(max_length=200)
     descripcion = models.TextField()
     precio = models.DecimalField(max_digits=10, decimal_places=2)
     descuento = models.DecimalField(max_digits=5, decimal_places=2, blank=True, null=True)
     stock = models.PositiveIntegerField()
-    categoria = models.CharField(max_length=100)
+    categoria = models.ForeignKey('Categoria', on_delete=models.CASCADE, related_name='productos')
     marca = models.CharField(max_length=100)
     imagen = models.URLField()
-    # Añadir related_name aquí para evitar conflictos
     dimensiones = models.OneToOneField('Dimensiones', on_delete=models.CASCADE, null=True, blank=True, related_name='producto')
     informacion_envio = models.CharField(max_length=200)
     estado_disponibilidad = models.CharField(max_length=50)
@@ -49,7 +55,7 @@ class Dimensiones(models.Model):
     profundidad = models.DecimalField(max_digits=5, decimal_places=2)
     peso = models.DecimalField(max_digits=5, decimal_places=2)
     # Aquí se añade related_name para evitar conflictos
-    product = models.ForeignKey(Producto, on_delete=models.CASCADE, related_name='dimensiones_producto')
+    
 
 
 # Reseña del Producto
