@@ -1,62 +1,118 @@
 /* src/pages/CrearProducto.css */
+.hoja {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  background-color: #f3e5f5; /* Fondo de la página */
+}
 
 .crear-producto-container {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 2rem;
-    background-color: #F3E5F5;
-    border-radius: 8px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  }
   
-  .titulo {
-    text-align: center;
-    color: #4A148C;
-    font-size: 2rem;
-    margin-bottom: 1rem;
-  }
-  
-  .formulario {
-    display: flex;
-    flex-direction: column;
-    gap: 1.2rem;
-  }
-  
-  .campo {
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
-  }
-  
-  .campo input,
-  .campo textarea {
-    padding: 0.8rem;
-    border-radius: 6px;
-    border: 1px solid #ddd;
-    font-size: 1rem;
-  }
-  
-  .campo textarea {
-    resize: vertical;
-    min-height: 100px;
-  }
-  
-  .boton {
-    background-color: #7E57C2;
-    color: white;
-    border: none;
-    padding: 0.8rem;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background-color 0.3s;
-  }
-  
-  .boton:hover {
-    background-color: #6A1B9A;
-  }
-  
-  .boton:active {
-    background-color: #4A148C;
-  }
+  margin: 30px;
+  padding: 2rem;
+  background-color: #E1BEE7;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.titulo {
+  text-align: center;
+  color: #4A148C;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.campo label {
+  font-weight: bold;
+  color: #4A148C;
+  margin-bottom: 0.5rem;
+}
+
+.campo input,
+.campo textarea {
+  padding: 0.8rem;
+  border: 1px solid #D1C4E9;
+  border-radius: 6px;
+  font-size: 1rem;
+  background-color: #F8EAF6;
+  color: #4A148C;
+  transition: border-color 0.3s ease;
+}
+
+.campo input:focus,
+.campo textarea:focus {
+  border-color: #7E57C2;
+  outline: none;
+  box-shadow: 0 0 5px rgba(126, 87, 194, 0.5);
+}
+
+/* Campo mediano */
+.campo.mediano input {
+  width: 50%;
+}
+
+/* Campo grande para el textarea */
+.campo-grande textarea {
+  height: 100px;
+  width: 100%;
+  resize: none;
+  border-color: #7E57C2;
+  outline: none;
+  box-shadow: 0 0 5px rgba(126, 87, 194, 0.5);
+  border-radius: 6px;
+  transition: border-color 0.3s ease;
+  background-color: #F8EAF6;
+  color: #4A148C;
+}
+
+/* Estilo para inputs pequeños alineados */
+.campo-doble {
+  display: flex;
+  gap: 1rem;
+}
+
+.campo-doble .campo {
+  flex: 1;
+}
+
+.campo.pequeno input {
+  width: 60px;
+}
+
+.boton {
+  background-color: #7E57C2;
+  color: white;
+  border: none;
+  padding: 0.8rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+  width: 100%;
+}
+
+.boton:hover {
+  background-color: #6A1B9A;
+}
+
+.boton:active {
+  background-color: #4A148C;
+}
+
+/* Estilo para texto de error o validación (opcional) */
+.error-message {
+  color: #D32F2F;
+  font-size: 0.9rem;
+  margin-top: -0.5rem;
+  margin-bottom: 0.5rem;
+  text-align: left;
+}
+
   
