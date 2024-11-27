@@ -1,39 +1,40 @@
-from rest_framework import viewsets, permissions
 from .models import Producto, Categoria, Reseña, Dimensiones, Usuario
-from .serializers import (
-    ProductoSerializer, 
-    CategoriaSerializer, 
-    ReseñaSerializer, 
-    DimensionesSerializer, 
-    UsuarioSerializer
-)
+from rest_framework import viewsets , permissions
+from .serializers import ProductoSerializer, CategoriaSerializer, ReseñaSerializer, DimensionesSerializer, UsuarioSerializer
 
-# Vistas para Producto
 class ProductoViewSet(viewsets.ModelViewSet):
     queryset = Producto.objects.all()
-    permission_classes = [permissions.AllowAny]  # Permitir acceso público (ajustar según necesidad)
+    permission_classes = [
+        permissions.AllowAny
+    ]
     serializer_class = ProductoSerializer
-
-# Vistas para Categoria
+    
 class CategoriaViewSet(viewsets.ModelViewSet):
     queryset = Categoria.objects.all()
-    permission_classes = [permissions.AllowAny]
+    permission_classes = [
+        permissions.AllowAny
+    ]
     serializer_class = CategoriaSerializer
 
-# Vistas para Reseña
 class ReseñaViewSet(viewsets.ModelViewSet):
     queryset = Reseña.objects.all()
-    permission_classes = [permissions.AllowAny]
+    permission_classes = [
+        permissions.AllowAny
+    ]
     serializer_class = ReseñaSerializer
 
-# Vistas para Dimensiones
 class DimensionesViewSet(viewsets.ModelViewSet):
     queryset = Dimensiones.objects.all()
-    permission_classes = [permissions.AllowAny]
+    permission_classes = [
+        permissions.AllowAny
+    ]
     serializer_class = DimensionesSerializer
 
-# Vistas para Usuario
 class UsuarioViewSet(viewsets.ModelViewSet):
     queryset = Usuario.objects.all()
-    permission_classes = [permissions.AllowAny]
+    permission_classes = [
+        permissions.AllowAny
+    ]
     serializer_class = UsuarioSerializer
+    
+# Compare this snippet from backend/products/urls.py:

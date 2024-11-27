@@ -40,9 +40,7 @@ class Producto(models.Model):
     marca = models.CharField(max_length=100)
     imagen = models.URLField()
     dimensiones = models.OneToOneField('Dimensiones', on_delete=models.CASCADE, null=True, blank=True, related_name='producto')
-    informacion_envio = models.CharField(max_length=200)
     estado_disponibilidad = models.CharField(max_length=50)
-    informacion_garantia = models.CharField(max_length=200)
     politica_devolucion = models.CharField(max_length=200)
     cantidad_minima = models.PositiveIntegerField()
     sku = models.CharField(max_length=20, unique=True)
@@ -56,8 +54,6 @@ class Dimensiones(models.Model):
     peso = models.DecimalField(max_digits=5, decimal_places=2)
     # Aquí se añade related_name para evitar conflictos
     
-
-
 # Reseña del Producto
 class Reseña(models.Model):
     producto = models.ForeignKey(Producto, on_delete=models.CASCADE, related_name='reseñas')
