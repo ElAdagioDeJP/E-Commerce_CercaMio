@@ -1,111 +1,109 @@
+
+
 /* General Container */
 .login-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #F3E5F5; /* Fondo general */
-    margin: 0;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;  
+  margin: 0;
+  padding: 0;
+  background-color: #F3E5F5; /* Fondo general */
   
-  /* Card */
-  .login-card {
-    background-color: #E1BEE7; /* Fondo del cuadro */
-    padding: 2rem;
-    border-radius: 12px;
-    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
-    text-align: center;
-    width: 100%;
-    max-width: 450px;
-    animation: fadeIn 0.5s ease-in-out;
-  }
+}
+
+
+
+/* Card */
+.login-card {
+  margin: 40px;
   
-  /* Animación */
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(-10px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  /* Fondo del cuadro */
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  width: 100%;
+  max-width: 450px;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Animación */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
   }
-  
-  /* Title */
-  .login-title {
-    color: #4A148C; /* Texto principal */
-    font-size: 2.5rem;
-    font-weight: bold;
-    margin-bottom: 1.5rem;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  /* Labels */
-  .login-label {
-    display: block;
-    color: #4A148C; /* Texto principal */
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-    font-size: 1rem;
-    text-align: left;
-  }
-  
-  /* Inputs */
-  .login-input {
-    width: 100%;
-    padding: 0.75rem;
-    margin-bottom: 1.2rem;
-    border: 1px solid #D1C4E9;
-    border-radius: 6px;
-    background-color: #F8EAF6; /* Fondo de los inputs */
-    font-size: 1rem;
-    color: #4A148C;
-    transition: border-color 0.3s ease;
-  }
-  
-  .login-input:focus {
-    border-color: #7E57C2; /* Border en foco */
-    outline: none;
-    box-shadow: 0px 0px 4px rgba(126, 87, 194, 0.5);
-  }
-  
-  /* Buttons */
-  .login-button {
-    background-color: #7E57C2; /* Fondo del botón */
-    color: #FFFFFF; /* Texto del botón */
-    padding: 0.8rem 1.5rem;
-    border: none;
-    border-radius: 6px;
-    font-size: 1rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-  }
-  
-  .login-button:hover {
-    background-color: #6A1B9A; /* Hover del botón */
-    transform: scale(1.05);
-  }
-  
-  .login-button:active {
-    transform: scale(0.98);
-  }
-  
-  /* Footer */
-  .login-footer {
-    margin-top: 1rem;
-    color: #4A148C; /* Texto del pie */
-    font-size: 0.9rem;
-  }
-  
-  .login-footer a {
-    color: #7E57C2; /* Color del enlace */
-    text-decoration: none;
-    font-weight: bold;
-  }
-  
-  .login-footer a:hover {
-    text-decoration: underline;
-  }
-  
+}
+
+/* Title */
+.login-title {
+  color: #4A148C;
+  /* Texto principal */
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Labels */
+.login-label {
+  display: block;
+  color: #4A148C;
+  /* Texto principal */
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  text-align: left;
+}
+
+/* Inputs */
+.login-input {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1.2rem;
+  border: 1px solid #D1C4E9;
+  border-radius: 6px;
+  background-color: #F8EAF6;
+  /* Fondo de los inputs */
+  font-size: 1rem;
+  color: #4A148C;
+  transition: border-color 0.3s ease;
+}
+
+.login-input:focus {
+  border-color: #7E57C2;
+  /* Border en foco */
+  outline: none;
+  box-shadow: 0px 0px 4px rgba(126, 87, 194, 0.5);
+}
+
+/* Buttons */
+.login-button {
+  background-color: #7E57C2;
+  /* Fondo del botón */
+  color: #FFFFFF;
+  /* Texto del botón */
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.login-button:hover {
+  background-color: #6A1B9A;
+  /* Hover del botón */
+  transform: scale(1.05);
+}
+
+.login-button:active {
+  transform: scale(0.98);
+}
