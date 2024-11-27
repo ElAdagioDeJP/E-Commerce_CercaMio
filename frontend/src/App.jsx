@@ -2,6 +2,7 @@ import './App.css';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Navbar from './Navbar';
+import Footer from './Footer';
 
 function App() {
   const navigate = useNavigate(); // Usamos el hook para navegar
@@ -65,6 +66,7 @@ function App() {
             </div>
           </main>
         </div>
+        <Footer />
       </div>
       </>
       );

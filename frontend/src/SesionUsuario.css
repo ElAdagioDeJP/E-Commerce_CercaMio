@@ -1,11 +1,12 @@
+
 /* General Container */
 .login-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    background-color: #F3E5F5; /* Fondo general */
-    margin: 0;
+    height: 100%;
+    
+    
   }
   
   /* Card */

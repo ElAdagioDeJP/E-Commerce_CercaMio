@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import "./SesionUsuario.css";
-import Navbar from './Navbar'; // Aquí se importa el Navbar
+import "./Registro.css";
+import Navbar from './Navbar';
+import Footer from './Footer'; // Aquí se importa el Navbar
 
 const RegistroUsuario = () => {
   const navigate = useNavigate();
@@ -49,9 +50,7 @@ const RegistroUsuario = () => {
     navigate('/');
   };
 
-  const handleBackClick = () => {
-    navigate('/');
-  };
+  
 
   return (
     <div className='cuerpo'>
@@ -158,6 +157,7 @@ const RegistroUsuario = () => {
           </form>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

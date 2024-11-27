@@ -3,13 +3,12 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import "./SesionUsuario.css";
 import Navbar from './Navbar';
+import Footer from './Footer';
 
 const SesionUsuario = () => {
   const navigate = useNavigate();
 
-  const handleBackClick = () => {
-    navigate('/');
-  };
+  
 
   const handleRegisterClick = (e) => {
     e.preventDefault();
@@ -17,7 +16,7 @@ const SesionUsuario = () => {
   };
 
   return (
-    <div>
+    <div className='cuerpo'>
       <Navbar />
       <div className="login-container">
         <div className="login-card">
@@ -37,6 +36,7 @@ const SesionUsuario = () => {
           </p>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

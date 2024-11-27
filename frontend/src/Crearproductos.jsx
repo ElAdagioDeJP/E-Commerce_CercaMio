@@ -3,12 +3,14 @@
 import React, { useState } from 'react';
 import './CrearProducto.css'; // Asegúrate de crear este archivo de estilo.
 import Navbar from './Navbar';
+import Footer from './Footer';
 
 const CrearProducto = () => {
     const [formData, setFormData] = useState({
         nombre: '',
         descripcion: '',
         precio: '',
+        stock: ''
     });
 
     const handleInputChange = (e) => {
@@ -19,7 +21,7 @@ const CrearProducto = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        if (!formData.nombre || !formData.descripcion || !formData.precio) {
+        if (!formData.nombre || !formData.descripcion || !formData.precio || !formData.stock) {
             alert('Por favor, completa todos los campos.');
             return;
         }
@@ -56,6 +58,7 @@ const CrearProducto = () => {
                     <div className="campo">
                         <label htmlFor="descripcion">Descripción</label>
                         <textarea
+                            type="text"
                             id="descripcion"
                             placeholder="Descripción del producto"
                             value={formData.descripcion}
@@ -72,9 +75,20 @@ const CrearProducto = () => {
                             onChange={handleInputChange}
                         />
                     </div>
+                    <div className="campo">
+                        <label htmlFor="stock">Ponga el stock del producto</label>
+                        <textarea
+                            type="number"
+                            id="stock"
+                            placeholder="stock"
+                            value={formData.stock}
+                            onChange={handleInputChange}
+                        />
+                    </div>
                     <button type="submit" className="boton">Crear Producto</button>
                 </form>
             </div>
+            <Footer />
         </div>
     );
 };
