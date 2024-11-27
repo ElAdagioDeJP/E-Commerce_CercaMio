@@ -31,6 +31,7 @@
 
 .campo label {
   font-weight: bold;
+  font-size: 2rem;
   color: #4A148C;
   margin-bottom: 0.5rem;
 }
@@ -56,6 +57,7 @@
 /* Campo mediano */
 .campo.mediano input {
   width: 50%;
+  font-size: 1.2rem;
 }
 
 /* Campo grande para el textarea */
@@ -70,12 +72,22 @@
   transition: border-color 0.3s ease;
   background-color: #F8EAF6;
   color: #4A148C;
+  font-size: 1.2rem;
+}
+
+.campo-grande label{
+  font-weight: bold;
+  font-size: 2rem;
+  color: #4A148C;
+  margin-bottom: 1.2rem;
+
 }
 
 /* Estilo para inputs pequeños alineados */
 .campo-doble {
   display: flex;
   gap: 1rem;
+
 }
 
 .campo-doble .campo {
@@ -96,6 +108,7 @@
   font-size: 1rem;
   transition: background-color 0.3s;
   width: 100%;
+  padding-bottom: 1rem;
 }
 
 .boton:hover {
