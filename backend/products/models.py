@@ -46,13 +46,18 @@ class Producto(models.Model):
     sku = models.CharField(max_length=20, unique=True)
     fecha_creacion = models.DateTimeField(auto_now_add=True)
     fecha_actualizacion = models.DateTimeField(auto_now=True)
+    def __str__(self):
+        return self.titulo
 
 class Dimensiones(models.Model):
     ancho = models.DecimalField(max_digits=5, decimal_places=2)
     alto = models.DecimalField(max_digits=5, decimal_places=2)
     profundidad = models.DecimalField(max_digits=5, decimal_places=2)
     peso = models.DecimalField(max_digits=5, decimal_places=2)
+    def __str__(self):
+        return f'{self.ancho} x {self.alto} x {self.profundidad}'
     # Aquí se añade related_name para evitar conflictos
+    
     
 # Reseña del Producto
 class Reseña(models.Model):
