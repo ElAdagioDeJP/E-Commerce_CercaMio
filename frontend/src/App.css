@@ -10,7 +10,7 @@ body {
   background-size: cover; /* Escala la imagen para cubrir todo el área */
   background-position: center; /* Centra la imagen */
   margin-top: 10px;
-  width: 100vw; /* Ocupa todo el ancho de la ventana */
+  width: 100%; /* Ocupa todo el ancho de la ventana */
   height: 100vh; /* Ocupa todo el alto de la ventana */
   
 }
