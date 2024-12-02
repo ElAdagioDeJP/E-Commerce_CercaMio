@@ -1,10 +1,12 @@
-/* Navbar Styling */
+/* Estilos generales */
 body {
   margin: 0;
   font-family: 'Roboto', sans-serif;
   padding: 0;
   background-color: #FFFAF0;
 }
+
+/* Fondo de la página */
 .background {
   background-image: url('./image/fondocercamio.webp'); /* Ruta relativa desde 'public' */
   background-size: cover; /* Escala la imagen para cubrir todo el área */
@@ -12,26 +14,28 @@ body {
   margin-top: 10px;
   width: 100%; /* Ocupa todo el ancho de la ventana */
   height: 100vh; /* Ocupa todo el alto de la ventana */
-  
 }
+
+/* Sección principal */
 .main {
   padding: 20px;
   text-align: center;
 }
 
+/* Sección de categorías */
 .categorias {
   background-color: #b39ddb;
-  width: 100%; /* Ocupa todo el ancho disponible */
-  height: auto; /* Ajusta automáticamente la altura al contenido */
-  border-radius: 8px; /* Bordes redondeados */
+  width: 100%;
+  border-radius: 8px;
   display: flex;
-
-  align-items: center; /* Centra el contenido horizontalmente */
-  gap: 20px; /* Espacio entre el h2 y las filas */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra ligera */
-  margin-bottom: 40px;
+  flex-direction: column; /* Ajustado para organizar contenido en columna */
+  align-items: center; /* Centra los elementos */
+  gap: 20px; /* Espaciado entre elementos */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
   padding-top: 30px;
   padding-bottom: 30px;
+  
 }
 
 .categorias h2 {
@@ -39,9 +43,7 @@ body {
   font-size: 50px;
   font-weight: bold;
   text-transform: uppercase;
-  margin: 10px;
-  
-  margin-bottom: 20px; /* Espaciado debajo del título */
+  margin: 10px 0 20px;
 }
 
 .categorias ul {
@@ -52,24 +54,23 @@ body {
   padding: 0;
   margin: 0;
   list-style: none;
-  
 }
 
 .categorias li {
-  background-color: #f5f5f5; /* Fondo para cada categoría */
-  border-radius: 8px; /* Esquinas redondeadas */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para darle profundidad */
-  width: 200px; /* Ancho fijo para cada categoría */
-  height: 200px; /* Ajusta la altura según necesites */
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 200px;
+  height: 200px;
   text-align: center;
   padding: 10px;
   transition: transform 0.3s ease;
+  margin-right: 30px;
+  cursor: pointer;
 }
 
-
-
 .categorias li:hover {
-  transform: translateY(-10px); /* Efecto al pasar el mouse */
+  transform: translateY(-10px);
 }
 
 .categorias h3 {
@@ -79,35 +80,34 @@ body {
 }
 
 .categorias img {
-  width: 100%; /* Ajusta la imagen al ancho del contenedor */
-  height: auto; /* Mantén la proporción de la imagen */
-  border-radius: 5px; /* Opcional: esquinas redondeadas */
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
 }
-
 
 /* Contenedor de los rectángulos */
 .rectangles-container {
   display: flex;
-  flex-direction: column; /* Los rectángulos estarán uno debajo del otro */
-  gap: 20px; /* Espaciado entre los rectángulos */
-  width: 100%; /* Ocupa todo el ancho */
-  align-items: center; /* Centra los rectángulos */
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  align-items: center;
 }
 
-/* Rectángulos */
+/* Estilo para los rectángulos */
 .rectangle {
-  width: 100%; /* Ocupa todo el ancho disponible */
-  height: 200px; /* Ajustamos la altura para acomodar los cuadrados más grandes */
-  background-color: #b39ddb; /* El color de fondo es el mismo que el de las anclas del nav */
+  width: 100%;
+  height: 200px;
+  background-color: #b39ddb;
   display: flex;
-  justify-content: center; /* Centra el contenido */
-  align-items: center;
+
   position: relative;
   padding: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra ligera */
-  border-radius: 8px; /* Bordes redondeados */
-  flex-direction: column; /* Organiza el contenido en columna */
-  padding-top: 30px; /* Espacio para el título */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  flex-direction: column;
+  padding-top: 30px;
+  
 }
 
 /* Título en la parte superior izquierda */
@@ -123,51 +123,61 @@ body {
 
 /* Contenedor de los cuadros */
 .square-container {
+  margin-top: 10px;
   display: flex;
-  justify-content: flex-start; /* Los cuadros estarán alineados a la izquierda */
-  width: 80%; /* Ocupa el 80% del rectángulo */
-  overflow: hidden; /* Oculta los cuadros que no están visibles */
-  position: relative; /* Necesario para el desplazamiento */
+  justify-content: flex-start;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  
 }
 
 /* Los cuadros */
 .square-wrapper {
   display: flex;
-  transition: transform 0.5s ease; /* Animación para mover la fila */
+  transition: transform 0.5s ease;
 }
 
 .square {
-  width: 150px; /* Tamaño más grande de los cuadrados */
-  height: 150px; /* Tamaño más grande de los cuadrados */
+  width: 150px;
+  height: 150px;
   background-color: #FFFAF0;
-  margin-right: 15px; /* Espaciado entre los cuadrados */
+  margin-right: 15px;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 8px; /* Bordes redondeados para el cuadrado */
+  border-radius: 8px;
   position: relative;
+  flex-shrink: 0; /* Evita que los cuadrados se reduzcan de tamaño */
+  transition: transform 0.3s ease;
+  cursor: pointer;
 }
-
+.square:hover {
+  transform: translateY(-5px);
+}
 /* Contenedor del nombre y precio dentro del cuadrado */
 .square-content {
-  position: absolute;
+  margin-top: 15px;
   bottom: 5px;
   left: 5px;
   color: white;
   font-size: 14px;
   text-align: center;
+  justify-content: center;
+  align-items: center;
+  
 }
 
-/* Mover los cuadrados a la derecha cuando se da click en la flecha */
+/* Mover los cuadros a la derecha cuando se da click en la flecha */
 .square-wrapper.move-right {
-  transform: translateX(-50%); /* Mueve la fila hacia la izquierda para mostrar los últimos 10 cuadrados */
+  transform: translateX(-50%);
 }
 
 /* Botón de flecha horizontal */
 .toggle-btn {
   position: absolute;
   right: 10px;
-  top: 50%; /* Centrado verticalmente */
+  top: 50%;
   transform: translateY(-50%);
   padding: 5px 10px;
   background-color: #ffffff;
@@ -180,4 +190,38 @@ body {
 
 .toggle-btn:hover {
   background-color: #f3f3f3;
+}
+
+/* Estilos para los productos dentro de los cuadrados */
+.product-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20%;
+}
+
+.product-image {
+  
+  width: 50%;
+  height: 50%;
+  object-fit: cover;
+  border-radius: 8px;
+  align-self: center;
+
+}
+
+.product-details {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.product-details h3 {
+  font-size: 16px;
+  margin-bottom: 5px;
+  color:  #171717;
+}
+
+.product-details p {
+  font-size: 14px;
+  color: #171717;
 }
