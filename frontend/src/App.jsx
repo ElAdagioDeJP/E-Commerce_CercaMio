@@ -15,7 +15,7 @@ function App() {
 
   const [productos, setProductos] = useState([]);
   const [error, setError] = useState(null); // Estado para manejar errores
-  
+
   const fetchProductos = async () => {
     try {
       // Solicitar los productos a la API
@@ -32,7 +32,32 @@ function App() {
   }, []);
 
   // Filtrar los productos más nuevos
-  const productosMasNuevos = productos.sort((a, b) => new Date(b.fecha_creacion) - new Date(a.fecha_creacion)).slice(0, 16);
+  const productosMasNuevos = productos
+    .sort((a, b) => new Date(b.fecha_creacion) - new Date(a.fecha_creacion))
+    .slice(0, 16);
+  console.log(productosMasNuevos);
+
+  // Filtrar los productos de la categoría "Otros"
+  const productosOtros = productos.filter(producto => producto.categoria_id === 2).slice(0, 16);
+  console.log(productosOtros);
+
+  const productosalimentos = productos.filter(producto => producto.categoria_id === 1).slice(0, 16);
+  console.log(productosOtros);
+
+  const productohogar = productos.filter(producto => producto.categoria_id === 5).slice(0, 16);
+  console.log(productosOtros);
+
+  const productotecnologia = productos.filter(producto => producto.categoria_id === 4).slice(0, 16);
+  console.log(productosOtros);
+
+  const productoauto = productos.filter(producto => producto.categoria_id === 3).slice(0, 16);
+  console.log(productosOtros);
+
+  const productoropa = productos.filter(producto => producto.categoria_id === 6).slice(0, 16);
+  console.log(productosOtros);
+
+  const productodeportes = productos.filter(producto => producto.categoria_id === 7).slice(0, 16);
+  console.log(productosOtros);
 
   return (
     <>
@@ -50,31 +75,31 @@ function App() {
               <ul>
                 <li>
                   <h3>Tecnología</h3>
-                  <img src="/images/tecnologia.jpg" alt="Tecnología" />
+                  <img src=".\image\tecnologia.avif" alt="Tecnología" style={{ paddingTop: '20px' }}/>
                 </li>
                 <li>
                   <h3>Auto</h3>
-                  <img src="/images/auto.jpg" alt="Auto" />
+                  <img src=".\image\camionet.png" alt="Auto" />
                 </li>
                 <li>
                   <h3>Hogar e Inmuebles</h3>
-                  <img src="/images/hogar.jpg" alt="Hogar e Inmuebles" />
+                  <img src=".\image\sofa4.png" alt="Hogar e Inmuebles" style={{ paddingTop: '30px' }} />
                 </li>
                 <li>
                   <h3>Alimentos</h3>
-                  <img src="/images/alimentos.jpg" alt="Alimentos" />
+                  <img src=".\image\alimentos.png" alt="Alimentos" />
                 </li>
                 <li>
                   <h3>Ropa</h3>
-                  <img src="/images/ropa.jpg" alt="Ropa" />
+                  <img src=".\image\ropa.png" alt="Ropa" style={{ width: '60%' , height: '60%', paddingTop: '10px'}} />
                 </li>
                 <li>
                   <h3>Deportes</h3>
-                  <img src="/images/deportes.jpg" alt="Deportes" />
+                  <img src=".\image\deportes.png" alt="Deportes" style={{ width: '70%' , height: '70%', paddingTop: '10px'}} />
                 </li>
                 <li>
                   <h3>Otros</h3>
-                  <img src="/images/otros.jpg" alt="Otros" />
+                  <img src=".\image\eladagiodejuan.png" alt="Otros" style={{ width: '70%' , height: '70%', paddingTop: '1px'}} />
                 </li>
               </ul>
             </div>
@@ -82,13 +107,13 @@ function App() {
             <div className="rectangles-container">
               {/* Pasamos los productos más nuevos como prop al rectángulo */}
               <Rectangle key={0} title="Mas nuevos" productos={productosMasNuevos} />
-              <Rectangle key={1} title="Tecnologia" />
-              <Rectangle key={2} title="Auto" />
-              <Rectangle key={3} title="Hogar e Inmuebles" />
-              <Rectangle key={4} title="Alimentos" />
-              <Rectangle key={5} title="Ropa" />
-              <Rectangle key={6} title="Deportes" />
-              <Rectangle key={7} title="Otros" />
+              <Rectangle key={1} title="Tecnologia" productos={productotecnologia} />
+              <Rectangle key={2} title="Auto" productos={productoauto}/>
+              <Rectangle key={3} title="Hogar e Inmuebles" productos={productohogar} />
+              <Rectangle key={4} title="Alimentos" productos={productosalimentos} />
+              <Rectangle key={5} title="Ropa" productos={productoropa} />
+              <Rectangle key={6} title="Deportes" productos={productodeportes} />
+              <Rectangle key={7} title="Otros" productos={productosOtros}/>
             </div>
           </main>
         </div>
@@ -99,20 +124,20 @@ function App() {
   );
 }
 
-function Rectangle({ title, productos }) {
+function Rectangle({ title, productos = [] }) {
   const [showMore, setShowMore] = useState(false);
 
   return (
     <div className="rectangle">
       {/* Título en la esquina superior izquierda */}
       <div className="rectangle-title">{title}</div>
-      
+
       {/* Mostrar los productos dentro de los cuadros */}
-      {productos && productos.length > 0 ? (
+      {productos.length > 0 ? (
         <div className="products-container">
           <div className="square-container">
             <div className={`square-wrapper ${showMore ? 'move-right' : ''}`}>
-              {productos.map((producto, index) => (
+              {productos.map((producto) => (
                 <div key={producto.id} className="square">
                   <div className="square-content">
                     <img src={producto.imagen} alt={producto.titulo} className="product-image" />
@@ -131,10 +156,7 @@ function Rectangle({ title, productos }) {
       )}
 
       {/* Flecha horizontal */}
-      <button
-        className="toggle-btn"
-        onClick={() => setShowMore(!showMore)}
-      >
+      <button className="toggle-btn" onClick={() => setShowMore(!showMore)}>
         {showMore ? '←' : '→'}
       </button>
     </div>
