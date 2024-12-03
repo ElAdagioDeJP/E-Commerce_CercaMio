@@ -11,16 +11,16 @@ if (Test-Path $venvPath) {
     python -m venv $venvPath
 
     # Activar el entorno virtual después de crearlo
-    Write-Host "Activando entorno virtual recien creado..."
+    Write-Host "Activando entorno virtual recién creado..."
     & "$venvPath\Scripts\Activate.ps1"
+}
 
-    # Instalar dependencias de Django si existe requirements.txt
-    Write-Host "Instalando dependencias de Django..."
-    if (Test-Path ".\backend\requirements.txt") {
-        pip install -r ".\backend\requirements.txt"
-    } else {
-        Write-Host "No se encontro el archivo requirements.txt en la carpeta backend."
-    }
+# Siempre instalar dependencias de Django desde requirements.txt si existe
+Write-Host "Instalando dependencias de Django..."
+if (Test-Path ".\backend\requirements.txt") {
+    pip install -r ".\backend\requirements.txt"
+} else {
+    Write-Host "No se encontró el archivo requirements.txt en la carpeta backend."
 }
 
 # Instalar dependencias de npm en la carpeta "frontend"
@@ -28,4 +28,4 @@ Write-Host "Instalando dependencias de npm..."
 Set-Location -Path ".\frontend"
 npm install
 
-Write-Host "Instalacion completada. ¡Ya estas listo para trabajar!"
+Write-Host "Instalación completada. ¡Ya estás listo para trabajar!"
