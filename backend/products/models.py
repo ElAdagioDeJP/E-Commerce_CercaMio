@@ -62,11 +62,13 @@ class Dimensiones(models.Model):
 # Reseña del Producto
 class Reseña(models.Model):
     producto = models.ForeignKey(Producto, on_delete=models.CASCADE, related_name='reseñas')
-    calificacion = models.PositiveSmallIntegerField()
+    calificacion = models.PositiveSmallIntegerField(min_value=1, max_value=5)
     comentario = models.TextField()
     fecha = models.DateTimeField()
     nombre_usuario = models.CharField(max_length=100)
     email_usuario = models.EmailField()
+    def __str__(self):
+        return f'{self.calificacion} por {self.nombre_usuario}'
     
 
 
