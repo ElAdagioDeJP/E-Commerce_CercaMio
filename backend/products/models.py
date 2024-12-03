@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-
+from django.core.validators import MinValueValidator, MaxValueValidator
 
 class Usuario(AbstractUser):
     telefono = models.CharField(max_length=20, blank=True, null=True)
@@ -62,13 +62,18 @@ class Dimensiones(models.Model):
 # Reseña del Producto
 class Reseña(models.Model):
     producto = models.ForeignKey(Producto, on_delete=models.CASCADE, related_name='reseñas')
-    calificacion = models.PositiveSmallIntegerField(min_value=1, max_value=5)
+    calificacion = models.PositiveSmallIntegerField(
+        validators=[
+            MinValueValidator(1),  # Valor mínimo permitido
+            MaxValueValidator(5)   # Valor máximo permitido
+        ]
+    )
     comentario = models.TextField()
     fecha = models.DateTimeField()
     nombre_usuario = models.CharField(max_length=100)
     email_usuario = models.EmailField()
     def __str__(self):
-        return f'{self.calificacion} por {self.nombre_usuario}'
+        return f'{self.calificacion} por {self.nombre_usuario} del producto {self.producto}'
     
 
 
