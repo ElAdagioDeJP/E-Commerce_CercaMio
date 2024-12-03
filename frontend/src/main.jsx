@@ -4,13 +4,13 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import App from './App'
 import SesionUsuario from './SesionUsuario'; // Importamos el nuevo componente
 import Registro from './Registro'; // Importamos el nuevo componente
-import Crearproductos from './Crearproductos';// Importamos el nuevo componente
+import CrearProducto from './CrearProducto';// Importamos el nuevo componente
 
 const router = createBrowserRouter([
     {
         path: '/',
         element: <App />,
-        
+
     },
     {
         path: '/sesion', // Nueva ruta
@@ -22,7 +22,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/crearproductos', // Nueva ruta para crear productos
-        element: <Crearproductos />, // Componente que se renderiza cuando se navega a '/crearproductos'
+        element: <CrearProducto />, // Componente que se renderiza cuando se navega a '/crearproductos'
     },
 
     /*
@@ -59,7 +59,7 @@ const router = createBrowserRouter([
 ])
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-    
+
         <RouterProvider router={router} />
-    
+
 )
