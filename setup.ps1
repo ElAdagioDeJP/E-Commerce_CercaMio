@@ -16,10 +16,10 @@ if (Test-Path $venvPath) {
 
     # Instalar dependencias de Django si existe requirements.txt
     Write-Host "Instalando dependencias de Django..."
-    if (Test-Path ".\frontend\requirements.txt") {
-        pip install -r ".\frontend\requirements.txt"
+    if (Test-Path ".\backend\requirements.txt") {
+        pip install -r ".\backend\requirements.txt"
     } else {
-        Write-Host "No se encontro el archivo requirements.txt en la carpeta frontend."
+        Write-Host "No se encontro el archivo requirements.txt en la carpeta backend."
     }
 }
 

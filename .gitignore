@@ -1,5 +1,9 @@
 node_modules/
 env/
-backend/backend/__pycache__
-frontend/venv
 venv/
+frontend/venv
+.venv/
+__pycache__
+.vscode/*
+!.vscode/extensions.json
+*.kate-swp
