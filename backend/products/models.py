@@ -33,7 +33,7 @@ class Categoria(models.Model):
 class Producto(models.Model):
     titulo = models.CharField(max_length=200)
     descripcion = models.TextField()
-    precio = models.DecimalField(max_digits=100, decimal_places=2)
+    precio = models.DecimalField(max_digits=20, decimal_places=2)
     descuento = models.DecimalField(max_digits=5, decimal_places=2, blank=True, null=True)
     stock = models.PositiveIntegerField()
     categoria = models.ForeignKey('Categoria', on_delete=models.CASCADE, related_name='productos')

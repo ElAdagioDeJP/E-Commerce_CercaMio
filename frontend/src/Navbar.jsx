@@ -13,7 +13,7 @@ function Navbar() {
     navigate('/');
   };
   const handleRegisterProductClick = () => {
-    navigate('/Crearproductos');
+    navigate('/CrearProductos');
   }
 
   return (
