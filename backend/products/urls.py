@@ -6,13 +6,13 @@ from .views import ProductoViewSet, CategoriaViewSet, ResenaViewSet, Dimensiones
 router = routers.DefaultRouter()
 
 # Registramos cada ViewSet sin el prefijo 'api' en la URL
-router.register('productos', ProductoViewSet, basename='producto')
-router.register('categorias', CategoriaViewSet, basename='categoria')
-router.register('resenas', ResenaViewSet, basename='resena')
-router.register('dimensiones', DimensionesViewSet, basename='dimensiones')
-router.register('usuarios', UsuarioViewSet, basename='usuario')
+router.register('api/productos', ProductoViewSet, basename='producto')
+router.register('api/categorias', CategoriaViewSet, basename='categoria')
+router.register('api/resenas', ResenaViewSet, basename='resena')
+router.register('api/dimensiones', DimensionesViewSet, basename='dimensiones')
+router.register('api/usuarios', UsuarioViewSet, basename='usuario')
 
 # Incluimos las rutas generadas
 urlpatterns = [
-    path('api/', include(router.urls)),  # Asegúrate de que todas las rutas estén bajo el prefijo 'api/'
+    path('', include(router.urls)),  # Asegúrate de que todas las rutas estén bajo el prefijo 'api/'
 ]
