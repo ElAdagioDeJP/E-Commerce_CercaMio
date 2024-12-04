@@ -129,21 +129,32 @@ function App() {
 
 function Rectangle({ title, productos = [] }) {
   const [showMore, setShowMore] = useState(false);
+  const navigate = useNavigate(); // Usamos el hook useNavigate aquí
+
+  const handleProductClick = (productoId) => {
+    navigate(`/producto/${productoId}`); // Redirige a la página del producto con el productoId
+  };
 
   return (
     <div className="rectangle">
-      {/* Título en la esquina superior izquierda */}
       <div className="rectangle-title">{title}</div>
 
-      {/* Mostrar los productos dentro de los cuadros */}
       {productos.length > 0 ? (
         <div className="products-container">
           <div className="square-container">
             <div className={`square-wrapper ${showMore ? 'move-right' : ''}`}>
               {productos.map((producto) => (
-                <div key={producto.id} className="square">
+                <div
+                  key={producto.id}
+                  className="square"
+                  onClick={() => handleProductClick(producto.id)} // Clic en el producto
+                >
                   <div className="square-content">
-                    <img src={producto.imagen} alt={producto.titulo} className="product-image" />
+                    <img
+                      src={producto.imagen}
+                      alt={producto.titulo}
+                      className="product-image"
+                    />
                     <div className="product-details">
                       <h3>{producto.titulo}</h3>
                       <p>${producto.precio}</p>
@@ -158,12 +169,12 @@ function Rectangle({ title, productos = [] }) {
         <p>No hay productos disponibles.</p>
       )}
 
-      {/* Flecha horizontal */}
       <button className="toggle-btn" onClick={() => setShowMore(!showMore)}>
         {showMore ? '←' : '→'}
       </button>
     </div>
   );
 }
+
 
 export default App;

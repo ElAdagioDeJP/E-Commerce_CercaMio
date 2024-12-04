@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Navbar from './Navbar';
 import Footer from './Footer';
@@ -10,6 +10,44 @@ const ProductoPage = () => {
     const [producto, setProducto] = useState(null);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [calificacion, setCalificacion] = useState(0); // Para la calificación
+    const [comentario, setComentario] = useState(""); // Para el comentario
+    const [reseñaEnviado, setReseñaEnviado] = useState(false); // Para saber si la reseña fue enviada
+    const navigate = useNavigate();
+
+    const handleBackClick = () => {
+        navigate('/'); 
+    };
+
+    const handleReseñaClick = () => {
+        setIsModalOpen(true); // Abre el modal
+    };
+
+    const handleCloseModal = () => {
+        setIsModalOpen(false); // Cierra el modal
+    };
+
+    const handleSendReseña = async () => {
+        const nuevaReseña = {
+            calificacion: calificacion,
+            comentario: comentario,
+            fecha: new Date().toISOString(), // Fecha actual en formato ISO
+            nombre_usuario: "Juan23", // Este sería el nombre del usuario, puedes obtenerlo dinámicamente
+            email_usuario: "juan@gmail.com", // Este sería el email del usuario
+        };
+
+        try {
+            await axios.post(`/api/productos/${productoId}/resenas`, nuevaReseña); // Enviar reseña a la base de datos
+            setReseñaEnviado(true); // Indica que la reseña fue enviada correctamente
+            setIsModalOpen(false); // Cierra el modal
+            setCalificacion(0); // Limpiar calificación
+            setComentario(""); // Limpiar comentario
+        } catch (error) {
+            console.error('Error al enviar la reseña:', error);
+            setReseñaEnviado(false); // En caso de error, la reseña no fue enviada
+        }
+    };
 
     useEffect(() => {
         const fetchProducto = async () => {
@@ -63,16 +101,51 @@ const ProductoPage = () => {
                                 </ul>
                             </div>
                             <div className="producto-buttons">
-                                <button className="buy-button">Comprar</button>
-                                <button className="review-button">Reseña</button>
+                                <button className="buy-button" onClick={handleBackClick}>Comprar</button>
+                                <button className="review-button" onClick={handleReseñaClick}>Reseña</button>
                             </div>
                         </div>
                     </div>
                 )}
             </div>
+
+            {/* Modal de reseña */}
+            {isModalOpen && (
+                <div className="modal-overlay">
+                    <div className="modal-content">
+                        <button className="modal-close" onClick={handleCloseModal}>X</button>
+                        <h2>Escribe tu reseña</h2>
+                        <div>
+                            <label>Calificación (1-5):</label>
+                            <input
+                                type="number"
+                                value={calificacion}
+                                onChange={(e) => setCalificacion(Math.min(5, Math.max(1, e.target.value)))}
+                                min="1"
+                                max="5"
+                            />
+                        </div>
+                        <div>
+                            <label>Comentario:</label>
+                            <textarea
+                                value={comentario}
+                                onChange={(e) => setComentario(e.target.value)}
+                                rows="5"
+                                cols="30"
+                                placeholder="Escribe tu reseña aquí..."
+                            />
+                        </div>
+                        <button className="send-review-button" onClick={handleSendReseña}>Enviar</button>
+                    </div>
+                </div>
+            )}
+
+            {reseñaEnviado && <p className="success-message">¡Gracias por tu reseña!</p>}
+
             <Footer />
         </div>
     );
 };
 
 export default ProductoPage;
+
