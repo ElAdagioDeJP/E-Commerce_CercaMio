@@ -2,19 +2,20 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import "./Registro.css";
 import Navbar from './Navbar';
-import Footer from './Footer'; // Aquí se importa el Navbar
+import Footer from './Footer';
+import axios from 'axios'; // Asegúrate de instalar axios
 
 const RegistroUsuario = () => {
   const navigate = useNavigate();
 
   // Estados para manejar los datos del formulario
   const [formData, setFormData] = useState({
-    nombre: '',
-    apellido: '',
-    usuario: '',
+    first_name: '',
+    last_name: '',
+    username: '',
     email: '',
     direccion: '',
-    fechanacimiento: '',
+    fecha_nacimiento: '',
     password: '',
     confirmPassword: '',
     telefono: ''
@@ -27,13 +28,13 @@ const RegistroUsuario = () => {
   };
 
   // Manejar el envío del formulario
-  const handleRegisterClick = (e) => {
+  const handleRegisterClick = async (e) => {
     e.preventDefault();
 
-    // Validación básica
-    if (!formData.nombre || !formData.email || !formData.password || !formData.confirmPassword 
-      || !formData.apellido || !formData.usuario || !formData.telefono || !formData.direccion 
-      || !formData.fechanacimiento) {
+    // Validaciones básicas
+    if (!formData.first_name || !formData.last_name || !formData.username ||
+        !formData.email || !formData.telefono || !formData.direccion ||
+        !formData.fecha_nacimiento || !formData.password || !formData.confirmPassword) {
       alert("Por favor, completa todos los campos.");
       return;
     }
@@ -43,43 +44,68 @@ const RegistroUsuario = () => {
       return;
     }
 
-    // Aquí podrías realizar una llamada al backend para registrar al usuario
-    console.log("Usuario registrado:", formData);
+    // Crear el payload con el formato adecuado
+    const payload = {
+      username: formData.username,
+      first_name: formData.first_name,
+      last_name: formData.last_name,
+      email: formData.email,
+      telefono: formData.telefono,
+      direccion: formData.direccion,
+      fecha_nacimiento: formData.fecha_nacimiento,
+      password: formData.password,
+    };
 
-    // Redirigir al inicio de sesión
-    navigate('/');
+    try {
+      // Realiza el POST al backend
+      const response = await axios.post('/api/usuarios/', payload);
+
+      if (response.status === 201) {
+        alert("Usuario registrado con éxito.");
+        navigate('/'); // Redirigir al inicio de sesión
+      }
+    } catch (error) {
+      console.error("Error al registrar el usuario:", error.response?.data || error.message);
+      alert("Ocurrió un error al registrar el usuario.");
+    }
   };
-
-  
 
   return (
     <div className='cuerpo'>
-
-      <Navbar /> {/* Aquí debe aparecer el Navbar */}
-
+      <Navbar />
       <div className="login-container">
         <div className="login-card">
           <h1 className="login-title">Registro de Usuario</h1>
           <form>
-            <label htmlFor="nombre" className="login-label">Nombre</label>
+            <label htmlFor="first_name" className="login-label">Nombre</label>
             <input
               type="text"
-              id="nombre"
+              id="first_name"
               className="login-input"
               placeholder="Ingrese su nombre"
-              value={formData.nombre}
+              value={formData.first_name}
               onChange={handleInputChange}
             />
 
-            <label htmlFor="apellido" className='login-label'>Apellido</label>
-            <input 
-            type="text"
-            id='apellido'
-            className='login-input'
-            placeholder='Ingrese su apellido'
-            value={formData.apellido}
-            onChange={handleInputChange}
-             />
+            <label htmlFor="last_name" className="login-label">Apellido</label>
+            <input
+              type="text"
+              id="last_name"
+              className="login-input"
+              placeholder="Ingrese su apellido"
+              value={formData.last_name}
+              onChange={handleInputChange}
+            />
+
+            <label htmlFor="username" className="login-label">Nombre de Usuario</label>
+            <input
+              type="text"
+              id="username"
+              className="login-input"
+              placeholder="Ingrese su nombre de usuario"
+              value={formData.username}
+              onChange={handleInputChange}
+            />
 
             <label htmlFor="email" className="login-label">Correo Electrónico</label>
             <input
@@ -91,43 +117,34 @@ const RegistroUsuario = () => {
               onChange={handleInputChange}
             />
 
-            <label htmlFor="usuario" className='login-label'>Nombre del usuario</label>
+            <label htmlFor="telefono" className="login-label">Teléfono</label>
             <input
-            type='text'
-            id='usuario'
-            className='login-input'
-            placeholder='Ingrese su usuario'
-            value={formData.usuario}
-            onChange={handleInputChange}
+              type="text"
+              id="telefono"
+              className="login-input"
+              placeholder="Ingrese su número de teléfono"
+              value={formData.telefono}
+              onChange={handleInputChange}
             />
 
-            <label htmlFor="telefono" className='login-label'>Telefono</label>
+            <label htmlFor="direccion" className="login-label">Dirección</label>
             <input
-            type='tel'
-            id='telefono'
-            className='login-input'
-            placeholder='Ingrese su numero de telefono'
-            value={formData.telefono}
-            onChange={handleInputChange}
-            />
-            <label htmlFor="direccion" className='login-label'>Direccion</label>
-            <input
-            type='text'
-            id='direccion'
-            className='login-input'
-            placeholder='Ingrese su direccion: estado, municipio, parroquia'
-            value={formData.direccion}
-            onChange={handleInputChange}
+              type="text"
+              id="direccion"
+              className="login-input"
+              placeholder="Ingrese su dirección"
+              value={formData.direccion}
+              onChange={handleInputChange}
             />
 
-            <label htmlFor="fechanacimiento" className='login-label'>Fecha de nacimiento</label>
+            <label htmlFor="fecha_nacimiento" className="login-label">Fecha de Nacimiento</label>
             <input
-            type='date'
-            id='fechanacimiento'
-            className='login-input'
-            placeholder='Ingrese su fecha de nacimiento'
-            value={formData.fechanacimiento}
-            onChange={handleInputChange}
+              type="date"
+              id="fecha_nacimiento"
+              className="login-input"
+              placeholder="Ingrese su fecha de nacimiento"
+              value={formData.fecha_nacimiento}
+              onChange={handleInputChange}
             />
 
             <label htmlFor="password" className="login-label">Contraseña</label>
@@ -153,7 +170,6 @@ const RegistroUsuario = () => {
             <button type="submit" className="login-button" onClick={handleRegisterClick}>
               Registrarse
             </button>
-           
           </form>
         </div>
       </div>
@@ -163,3 +179,4 @@ const RegistroUsuario = () => {
 };
 
 export default RegistroUsuario;
+
