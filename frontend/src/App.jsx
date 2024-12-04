@@ -88,12 +88,12 @@ function App() {
                   <h3>Hogar e Inmuebles</h3>
                   <img src=".\image\sofa4.png" alt="Hogar e Inmuebles" style={{ paddingTop: '30px' }} />
                 </li>
-                <li>
-                  <h3 onClick={() => handleCategoryClick(1)}>Alimentos</h3>
+                <li onClick={() => handleCategoryClick(1)}>
+                  <h3>Alimentos</h3>
                   <img src=".\image\alimentos.png" alt="Alimentos" />
                 </li>
-                <li>
-                  <h3 onClick={() => handleCategoryClick(6)}>Ropa</h3>
+                <li onClick={() => handleCategoryClick(6)}>
+                  <h3>Ropa</h3>
                   <img src=".\image\ropa.png" alt="Ropa" style={{ width: '60%' , height: '60%', paddingTop: '10px'}} />
                 </li>
                 <li onClick={() => handleCategoryClick(7)}>
