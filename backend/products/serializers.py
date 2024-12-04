@@ -23,8 +23,7 @@ class DimensionesSerializer(serializers.ModelSerializer):
 class ResenaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Resena
-        fields = ['id', 'calificacion', 'comentario', 'fecha', 'nombre_usuario', 'email_usuario']
-        read_only_fields = ['id']  # El campo `id` es solo lectura
+        fields = ['id', 'producto','calificacion', 'comentario', 'fecha', 'nombre_usuario', 'email_usuario']
 
 
 class ProductoSerializer(serializers.ModelSerializer):
