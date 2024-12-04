@@ -5,7 +5,8 @@ import App from './App';
 import SesionUsuario from './SesionUsuario'; // Componente para iniciar sesión
 import Registro from './Registro'; // Componente para registrar usuarios
 import CrearProducto from './CrearProducto'; // Componente para crear productos
-import CategoriaPage from './CategoriaPage'; // Página para mostrar productos por categoría (opcional)
+import CategoriaPage from './CategoriaPage'; // Página para mostrar productos por categoría
+import ProductoPage from './ProductoPage'; // Nueva página para mostrar detalles del producto
 
 // Configuración de rutas
 const router = createBrowserRouter([
@@ -27,7 +28,11 @@ const router = createBrowserRouter([
     },
     {
         path: '/categoria/:id', // Ruta dinámica para mostrar productos por categoría
-        element: <CategoriaPage />, // Puedes eliminar esto si no lo necesitas ahora
+        element: <CategoriaPage />,
+    },
+    {
+        path: '/producto/:productoId', // Nueva ruta para los detalles del producto
+        element: <ProductoPage />, // Página de detalles del producto
     },
 ]);
 

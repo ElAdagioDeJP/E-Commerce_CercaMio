@@ -1,0 +1,146 @@
+/* Contenedor principal de la página de producto */
+.producto-page {
+    background-color: #FFFAF0;
+    padding: 20px;
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Asegura que el contenedor ocupe al menos la altura de la pantalla */
+    flex-direction: column;
+}
+
+/* Contenedor principal de los detalles del producto */
+.producto-detail {
+    background-color: #ffffff;
+    display: flex;
+    justify-content: flex-start; /* Alinea todo al principio */
+    align-items: flex-start;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    width: 90%; /* Limita el ancho */
+    max-width: 1200px;
+    padding: 20px;
+    margin: 20px 0;
+    overflow: hidden; /* Evita el desbordamiento */
+}
+
+/* Estilo de la imagen */
+.producto-detail img {
+    max-width: 450px; /* Imagen más grande */
+    height: auto;
+    border-radius: 8px;
+    margin-right: 40px; /* Mayor espacio entre la imagen y la información */
+}
+
+/* Contenedor de la información del producto */
+.producto-info {
+    flex: 2; /* Aumenta el tamaño de la columna de información */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 15px; /* Aumenta el espacio entre los párrafos */
+    height: 100%; /* Para que ocupe el alto completo disponible */
+}
+
+/* Título del producto */
+.producto-info h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #7e57c2;
+    margin-bottom: 10px;
+}
+
+/* Contenedor de los párrafos en fila */
+.producto-info p {
+    font-size: 1.1rem;
+    color: #333;
+    margin: 5px 0;
+    display: inline-block; /* Hace que los párrafos estén uno al lado del otro */
+    margin-right: 30px; /* Espacio entre los párrafos */
+    white-space: nowrap; /* Evita que los párrafos se rompan */
+}
+
+/* Estilo para los botones de compra y reseña */
+.producto-buttons {
+    margin-top: 20px;
+    display: flex;
+    gap: 20px;
+}
+
+.buy-button,
+.review-button {
+    padding: 12px 25px;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.buy-button {
+    background-color: #4CAF50; /* Verde */
+    color: white;
+}
+
+.buy-button:hover {
+    background-color: #45a049;
+}
+
+.review-button {
+    background-color: #FFD700; /* Amarillo */
+    color: white;
+}
+
+.review-button:hover {
+    background-color: #ffcc00;
+}
+
+/* Estilo para la lista de dimensiones */
+.producto-info ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap; /* Para que las dimensiones se acomoden bien */
+}
+
+.producto-info ul li {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 5px;
+    margin-right: 20px; /* Espacio entre las dimensiones */
+}
+
+.producto-info strong {
+    font-weight: bold;
+    color: #7e57c2;
+}
+
+/* Cargando y error */
+.loading, .error {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #d32f2f;
+    font-weight: bold;
+}
+
+/* Asegura que la página no baje demasiado en dispositivos pequeños */
+@media (max-width: 768px) {
+    .producto-detail {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .producto-detail img {
+        max-width: 300px;
+        margin-bottom: 20px;
+    }
+
+    .producto-info {
+        padding-left: 0;
+    }
+
+    .producto-buttons {
+        flex-direction: column;
+    }
+}

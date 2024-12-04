@@ -1,45 +1,43 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import './CategoriaPage.css';
 
 const CategoriaPage = () => {
-    const { id } = useParams(); // Obtener el ID de la categoría de la URL
+    const { id } = useParams();
     const [productos, setProductos] = useState([]);
-    const [categoriaNombre, setCategoriaNombre] = useState(''); // Estado para el nombre de la categoría
+    const [categoriaNombre, setCategoriaNombre] = useState('');
     const [error, setError] = useState(null);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const fetchProductos = async () => {
+        const fetchData = async () => {
             try {
-                // Solicitar todos los productos de la API
-                const response = await axios.get('/api/productos/');
-                const productosFiltrados = response.data.filter(
-                    (producto) => producto.categoria_id === parseInt(id) // Comparar correctamente con un número
+                setLoading(true);
+                const productosResponse = await axios.get('/api/productos/');
+                const categoriaResponse = await axios.get(`/api/categorias/${id}`);
+
+                const productosFiltrados = productosResponse.data.filter(
+                    (producto) => producto.categoria_id === parseInt(id)
                 );
-                setProductos(productosFiltrados.slice(0, 16)); // Limitar a los primeros 16 productos
+                setProductos(productosFiltrados.slice(0, 16));
+                setCategoriaNombre(categoriaResponse.data.nombre);
             } catch (err) {
-                console.error('Error fetching productos:', err);
-                setError('Error al obtener los productos de esta categoría');
+                console.error('Error fetching data:', err);
+                setError('Error al obtener los datos.');
+            } finally {
+                setLoading(false);
             }
         };
 
-        const fetchCategoriaNombre = async () => {
-            try {
-                // Solicitar el nombre de la categoría de la API
-                const response = await axios.get(`/api/categorias/${id}`);
-                setCategoriaNombre(response.data.nombre); // Actualizar el nombre de la categoría
-            } catch (error) {
-                console.error('Error al obtener la categoría:', error);
-                setError('Error al obtener la categoría');
-            }
-        };
+        fetchData();
+    }, [id]);
 
-        fetchProductos();
-        fetchCategoriaNombre(); // Llamar a la función para obtener el nombre de la categoría
-    }, [id]); // Dependencia: se ejecuta cuando cambia el ID de la categoría
+    if (loading) {
+        return <p>Loading...</p>;
+    }
 
     return (
         <div>
@@ -49,17 +47,24 @@ const CategoriaPage = () => {
                 {error ? (
                     <p>{error}</p>
                 ) : (
-                    <div className="conteiner">
+                    <div className="container">
                         <div className="productos-container">
-                            {productos.map((producto) => (
-                                <div key={producto.id} className="producto-card">
-                                    <img src={producto.imagen} alt={producto.titulo} />
-                                    <h3>{producto.titulo}</h3>
-                                    <p>${producto.precio}</p>
-                                </div>
-                            ))}
+                            {productos.length > 0 ? (
+                                productos.map((producto) => (
+                                    <Link
+                                        key={producto.id}
+                                        to={`/producto/${producto.id}`}
+                                        className="producto-card"
+                                    >
+                                        <img src={producto.imagen} alt={producto.titulo} />
+                                        <h3>{producto.titulo}</h3>
+                                        <p>${producto.precio}</p>
+                                    </Link>
+                                ))
+                            ) : (
+                                <p>No hay productos disponibles en esta categoría.</p>
+                            )}
                         </div>
-                        {productos.length === 0 && <p>No hay productos disponibles en esta categoría.</p>}
                     </div>
                 )}
             </div>
