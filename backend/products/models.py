@@ -60,8 +60,8 @@ class Dimensiones(models.Model):
     
     
 # Reseña del Producto
-class Reseña(models.Model):
-    producto = models.ForeignKey(Producto, on_delete=models.CASCADE, related_name='reseñas')
+class Resena(models.Model):
+    producto = models.ForeignKey(Producto, on_delete=models.CASCADE, related_name='resenas')
     calificacion = models.PositiveSmallIntegerField(
         validators=[
             MinValueValidator(1),  # Valor mínimo permitido

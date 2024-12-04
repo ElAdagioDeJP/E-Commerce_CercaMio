@@ -20,21 +20,22 @@ const SesionUsuario = () => {
   // Manejar el envío del formulario
   const handleLoginClick = async (e) => {
     e.preventDefault();
-
+  
     // Validaciones básicas
     if (!email || !password) {
       alert("Por favor, completa todos los campos.");
       return;
     }
-
+  
     try {
-      // Realizar la solicitud GET al backend
-      const response = await axios.get('/api/usuarios/', {
-        
-        params: { email, password }, // Pasar los parámetros de consulta
+      // Enviar solicitud POST a la API para verificar al usuario
+      const response = await axios.post('http://127.0.0.1:8000/api/usuarios/verificar-usuario/', {
+        email,
+        password
       });
-      console.log(response)
-      if (response.status === 200 && response.data.authenticated) {
+  
+      console.log(response.data);
+      if (response.status === 200 && response.data.message) {
         alert("Inicio de sesión exitoso.");
         // Redirigir al dashboard o página principal
         navigate('/dashboard');
@@ -46,6 +47,8 @@ const SesionUsuario = () => {
       alert("Ocurrió un error durante el inicio de sesión.");
     }
   };
+  
+  
 
   const handleRegisterClick = (e) => {
     e.preventDefault();

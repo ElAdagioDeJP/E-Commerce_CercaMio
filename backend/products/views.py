@@ -1,9 +1,9 @@
 from rest_framework import viewsets, permissions
-from .models import Producto, Categoria, Reseña, Dimensiones, Usuario
+from .models import Producto, Categoria, Resena, Dimensiones, Usuario
 from .serializers import (
     ProductoSerializer, 
     CategoriaSerializer, 
-    ReseñaSerializer, 
+    ResenaSerializer, 
     DimensionesSerializer, 
     UsuarioSerializer
 )
@@ -21,10 +21,10 @@ class CategoriaViewSet(viewsets.ModelViewSet):
     serializer_class = CategoriaSerializer
 
 # Vistas para Reseña
-class ReseñaViewSet(viewsets.ModelViewSet):
-    queryset = Reseña.objects.all()
+class ResenaViewSet(viewsets.ModelViewSet):
+    queryset = Resena.objects.all()
     permission_classes = [permissions.AllowAny]
-    serializer_class = ReseñaSerializer
+    serializer_class = ResenaSerializer
 
 # Vistas para Dimensiones
 class DimensionesViewSet(viewsets.ModelViewSet):

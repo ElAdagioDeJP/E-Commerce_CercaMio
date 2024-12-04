@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Usuario, Categoria, Producto, Dimensiones, Reseña
+from .models import Usuario, Categoria, Producto, Dimensiones, Resena
 
 
 class UsuarioSerializer(serializers.ModelSerializer):
@@ -20,9 +20,9 @@ class DimensionesSerializer(serializers.ModelSerializer):
         fields = ['ancho', 'alto', 'profundidad', 'peso']
 
 
-class ReseñaSerializer(serializers.ModelSerializer):
+class ResenaSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Reseña
+        model = Resena
         fields = ['id', 'calificacion', 'comentario', 'fecha', 'nombre_usuario', 'email_usuario']
 
 
@@ -32,7 +32,7 @@ class ProductoSerializer(serializers.ModelSerializer):
     )
 
     dimensiones = DimensionesSerializer(read_only=True)
-    reseñas = ReseñaSerializer(many=True, read_only=True)
+    resenas = ResenaSerializer(many=True, read_only=True)
 
     class Meta:
         model = Producto
@@ -40,6 +40,6 @@ class ProductoSerializer(serializers.ModelSerializer):
             'id', 'titulo', 'descripcion', 'precio', 'descuento', 'stock',
             'categoria_id', 'marca', 'imagen', 'dimensiones',
             'estado_disponibilidad', 'politica_devolucion',
-            'cantidad_minima', 'sku', 'fecha_creacion', 'fecha_actualizacion', 'reseñas'
+            'cantidad_minima', 'sku', 'fecha_creacion', 'fecha_actualizacion', 'resenas'
         ]
 

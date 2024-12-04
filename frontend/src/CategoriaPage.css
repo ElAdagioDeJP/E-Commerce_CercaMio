@@ -1,0 +1,110 @@
+/* Estilos generales para la página de categoría */
+.categoria-page {
+    background-color: #FFFAF0;
+    padding: 20px;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Título de la categoría */
+.categoria-page h1 {
+    color: #7e57c2;
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+/* Contenedor principal */
+.categoria-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin: 0 auto;
+    max-width: 1200px;
+    padding: 20px;
+}
+
+/* Contenedor de productos */
+.productos-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    width: 100%;
+}
+
+/* Tarjetas de productos */
+.producto-card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: calc(25% - 20px); /* Ajusta el ancho para que quepan 4 tarjetas en una fila */
+    max-width: 200px;
+    padding: 15px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.producto-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Imagen del producto */
+.producto-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+/* Título del producto */
+.producto-card h3 {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 10px;
+    text-transform: capitalize;
+}
+
+/* Precio del producto */
+.producto-card p {
+    font-size: 1rem;
+    color: #7e57c2;
+    font-weight: bold;
+}
+
+/* Mensaje de error */
+.categoria-page .error {
+    font-size: 1.2rem;
+    color: #d32f2f;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Mensaje de "no productos disponibles" */
+.categoria-content p {
+    font-size: 1.1rem;
+    color: #555;
+    font-style: italic;
+    text-align: center;
+    width: 100%;
+}
+
+/* Contenedor para espacios entre secciones */
+.conteiner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 0;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+  

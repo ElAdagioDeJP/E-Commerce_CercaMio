@@ -26,6 +26,9 @@ function App() {
       console.error('Error fetching productos:', err);
     }
   };
+  const handleCategoryClick = (categoryId) => {
+    navigate(`/categoria/${categoryId}`);
+  };
 
   useEffect(() => {
     fetchProductos();
@@ -73,31 +76,31 @@ function App() {
             <div className="categorias">
               <h2>Categorías</h2>
               <ul>
-                <li>
+                <li onClick={() => handleCategoryClick(4)}>
                   <h3>Tecnología</h3>
                   <img src=".\image\tecnologia.avif" alt="Tecnología" style={{ paddingTop: '20px' }}/>
                 </li>
-                <li>
+                <li  onClick={() => handleCategoryClick(3)}>
                   <h3>Auto</h3>
                   <img src=".\image\camionet.png" alt="Auto" />
                 </li>
-                <li>
+                <li onClick={() => handleCategoryClick(5)}> 
                   <h3>Hogar e Inmuebles</h3>
                   <img src=".\image\sofa4.png" alt="Hogar e Inmuebles" style={{ paddingTop: '30px' }} />
                 </li>
                 <li>
-                  <h3>Alimentos</h3>
+                  <h3 onClick={() => handleCategoryClick(1)}>Alimentos</h3>
                   <img src=".\image\alimentos.png" alt="Alimentos" />
                 </li>
                 <li>
-                  <h3>Ropa</h3>
+                  <h3 onClick={() => handleCategoryClick(6)}>Ropa</h3>
                   <img src=".\image\ropa.png" alt="Ropa" style={{ width: '60%' , height: '60%', paddingTop: '10px'}} />
                 </li>
-                <li>
+                <li onClick={() => handleCategoryClick(7)}>
                   <h3>Deportes</h3>
                   <img src=".\image\deportes.png" alt="Deportes" style={{ width: '70%' , height: '70%', paddingTop: '10px'}} />
                 </li>
-                <li>
+                <li onClick={() => handleCategoryClick(2)}>
                   <h3>Otros</h3>
                   <img src=".\image\eladagiodejuan.png" alt="Otros" style={{ width: '70%' , height: '70%', paddingTop: '1px'}} />
                 </li>
