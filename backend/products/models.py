@@ -46,8 +46,10 @@ class Producto(models.Model):
     sku = models.CharField(max_length=20, unique=True)
     fecha_creacion = models.DateTimeField(auto_now_add=True)
     fecha_actualizacion = models.DateTimeField(auto_now=True)
+    
     def __str__(self):
         return self.titulo
+
 
 class Dimensiones(models.Model):
     ancho = models.DecimalField(max_digits=5, decimal_places=2)
@@ -59,7 +61,6 @@ class Dimensiones(models.Model):
     # Aquí se añade related_name para evitar conflictos
     
     
-# Reseña del Producto
 class Resena(models.Model):
     producto = models.ForeignKey(Producto, on_delete=models.CASCADE, related_name='resenas')
     calificacion = models.PositiveSmallIntegerField(
@@ -72,8 +73,10 @@ class Resena(models.Model):
     fecha = models.DateTimeField()
     nombre_usuario = models.CharField(max_length=100)
     email_usuario = models.EmailField()
+
     def __str__(self):
         return f'{self.calificacion} por {self.nombre_usuario} del producto {self.producto}'
+
     
 
 

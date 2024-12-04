@@ -7,6 +7,9 @@ from .serializers import (
     DimensionesSerializer, 
     UsuarioSerializer
 )
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
 
 # Vistas para Producto
 class ProductoViewSet(viewsets.ModelViewSet):
@@ -37,3 +40,16 @@ class UsuarioViewSet(viewsets.ModelViewSet):
     queryset = Usuario.objects.all()
     permission_classes = [permissions.AllowAny]
     serializer_class = UsuarioSerializer
+
+class ProductoResenasAPIView(APIView):
+    """
+    Vista para obtener las reseñas asociadas a un producto.
+    """
+    def get(self, request, producto_id):
+        try:
+            producto = Producto.objects.get(id=producto_id)
+            resenas = producto.resenas.all()  # Accede a las reseñas relacionadas
+            serializer = ResenaSerializer(resenas, many=True)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        except Producto.DoesNotExist:
+            return Response({"error": "Producto no encontrado"}, status=status.HTTP_404_NOT_FOUND)

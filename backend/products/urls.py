@@ -1,6 +1,6 @@
 from rest_framework import routers
 from django.urls import path, include
-from .views import ProductoViewSet, CategoriaViewSet, ResenaViewSet, DimensionesViewSet, UsuarioViewSet
+from .views import ProductoViewSet, CategoriaViewSet, ResenaViewSet, DimensionesViewSet, UsuarioViewSet, ProductoResenasAPIView
 
 # Instancia del router
 router = routers.DefaultRouter()
@@ -15,4 +15,5 @@ router.register('api/usuarios', UsuarioViewSet, basename='usuario')
 # Incluimos las rutas generadas
 urlpatterns = [
     path('', include(router.urls)),  # Asegúrate de que todas las rutas estén bajo el prefijo 'api/'
+    path('api/productos/<int:producto_id>/resenas/', ProductoResenasAPIView.as_view(), name='producto-resenas'),
 ]

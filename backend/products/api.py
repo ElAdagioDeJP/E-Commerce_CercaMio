@@ -5,6 +5,11 @@ from django.contrib.auth.hashers import check_password
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+from .models import Producto
+from .serializers import ResenaSerializer
 
 class ProductoViewSet(viewsets.ModelViewSet):
     queryset = Producto.objects.all()
@@ -33,6 +38,17 @@ class DimensionesViewSet(viewsets.ModelViewSet):
         permissions.AllowAny
     ]
     serializer_class = DimensionesSerializer
+
+class ProductoResenasAPIView(APIView):
+    def get(self, request, producto_id):
+        try:
+            producto = Producto.objects.get(id=producto_id)
+            resenas = producto.resenas.all()
+            serializer = ResenaSerializer(resenas, many=True)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        except Producto.DoesNotExist:
+            return Response({"error": "Producto no encontrado"}, status=status.HTTP_404_NOT_FOUND)
+
 
 class UsuarioViewSet(viewsets.ModelViewSet):
     queryset = Usuario.objects.all()
