@@ -5,7 +5,7 @@ from .models import Usuario, Categoria, Producto, Dimensiones, Reseña
 class UsuarioSerializer(serializers.ModelSerializer):
     class Meta:
         model = Usuario
-        fields = ['id', 'username', 'first_name', 'last_name', 'email', 'telefono', 'direccion', 'fecha_nacimiento']
+        fields = ['id', 'username', 'password', 'first_name', 'last_name', 'email', 'telefono', 'direccion', 'fecha_nacimiento']
         
         
 class CategoriaSerializer(serializers.ModelSerializer):
