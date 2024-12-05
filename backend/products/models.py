@@ -40,7 +40,13 @@ class Producto(models.Model):
     categoria = models.ForeignKey('Categoria', on_delete=models.CASCADE, related_name='productos')
     marca = models.CharField(max_length=100)
     imagen = models.URLField(max_length=500)
-    dimensiones = models.ForeignKey('Dimensiones', on_delete=models.CASCADE, null=True, blank=True, related_name='producto')
+    dimensiones = models.OneToOneField(
+        'Dimensiones',
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name='producto'
+    )
     estado_disponibilidad = models.CharField(max_length=50)
     politica_devolucion = models.CharField(max_length=200)
     cantidad_minima = models.PositiveIntegerField()

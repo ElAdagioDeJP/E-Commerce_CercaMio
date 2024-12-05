@@ -34,8 +34,7 @@ class ProductoSerializer(serializers.ModelSerializer):
     categoria_id = serializers.PrimaryKeyRelatedField(
         queryset=Categoria.objects.all(), source='categoria'
     )
-
-    dimensiones = DimensionesSerializer(read_only=True)
+    dimensiones = DimensionesSerializer()  # Habilitar lectura y escritura
     resenas = ResenaSerializer(many=True, read_only=True)
 
     class Meta:
@@ -47,3 +46,34 @@ class ProductoSerializer(serializers.ModelSerializer):
             'cantidad_minima', 'sku', 'fecha_creacion', 'fecha_actualizacion', 'resenas'
         ]
 
+    def create(self, validated_data):
+        dimensiones_data = validated_data.pop('dimensiones', None)
+        producto = Producto.objects.create(**validated_data)
+        if dimensiones_data:
+            dimensiones = Dimensiones.objects.create(**dimensiones_data)
+            producto.dimensiones = dimensiones
+            producto.save()
+        return producto
+
+    def update(self, instance, validated_data):
+        dimensiones_data = validated_data.pop('dimensiones', None)
+
+        # Actualizar los campos del producto
+        for attr, value in validated_data.items():
+            setattr(instance, attr, value)
+        instance.save()
+
+        # Manejar las dimensiones asociadas
+        if dimensiones_data:
+            if instance.dimensiones:
+                # Actualizar dimensiones existentes
+                for attr, value in dimensiones_data.items():
+                    setattr(instance.dimensiones, attr, value)
+                instance.dimensiones.save()
+            else:
+                # Crear nuevas dimensiones si no existen
+                dimensiones = Dimensiones.objects.create(**dimensiones_data)
+                instance.dimensiones = dimensiones
+                instance.save()
+
+        return instance

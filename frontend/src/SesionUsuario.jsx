@@ -37,9 +37,15 @@ const SesionUsuario = () => {
       );
   
       if (usuario) {
-        // Guardar el username en el localStorage
-        localStorage.setItem('username', usuario.username); // Guardar username
-        navigate('/');
+        // Guardar el objeto usuario en localStorage
+        const userData = {
+          username: usuario.username,
+          email: usuario.email,
+          id: usuario.id,
+        };
+        localStorage.setItem('user', JSON.stringify(userData)); // Convertir el objeto a JSON y guardarlo
+  
+        navigate('/'); // Redirigir al inicio
       } else {
         alert("Credenciales incorrectas.");
       }
@@ -48,11 +54,11 @@ const SesionUsuario = () => {
       alert("Ocurrió un error al iniciar sesión. Por favor, intenta nuevamente.");
     }
   };
-  
-  
 
-  
-  
+
+
+
+
 
   const handleRegisterClick = (e) => {
     e.preventDefault();

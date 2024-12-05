@@ -4,6 +4,7 @@ import axios from 'axios';
 import Navbar from './Navbar'; // Verifica si este componente existe
 import Footer from './Footer'; // Verifica si este componente existe
 import './ProductoPage.css';
+import SesionUsuario from './SesionUsuario';
 
 const ProductoPage = () => {
     const { productoId } = useParams();
@@ -25,11 +26,16 @@ const ProductoPage = () => {
     };
 
     const handleReseñaClick = () => {
-        setIsModalOpen(true); // Abre el modal
+        const user = localStorage.getItem('user');
+        if (!user || user === "") {
+            alert('Debes estar logueado para dejar una reseña');
+            return;
+        }
+        setIsModalOpen(true); // Abre el modal de reseña
     };
 
     const handleCloseModal = () => {
-        setIsModalOpen(false); // Cierra el modal
+        setIsModalOpen(false); // Cierra el modal de reseña
     };
 
     const handleSendReseña = async () => {
@@ -41,26 +47,31 @@ const ProductoPage = () => {
             alert("El comentario no puede estar vacío.");
             return;
         }
-    
+        const user = JSON.parse(localStorage.getItem('user'));
+        // Si no hay un usuario logueado, mostrar un mensaje de error
+        if (!user) {
+            alert('Debes estar logueado para dejar una reseña');
+            return;
+        }
         const nuevaReseña = {
             calificacion: calificacion,
             comentario: comentario,
             fecha: new Date().toISOString(),
-            nombre_usuario: "root", // Nombre ficticio, reemplázalo por el sistema de autenticación
-            email_usuario: "juan@gmail.com", // Email ficticio
+            nombre_usuario: user.username, // Nombre ficticio, reemplázalo por el sistema de autenticación
+            email_usuario: user.email, // Email ficticio
         };
-    
+
         try {
             const productoIdInt2 = parseInt(productoId, 10); // Declaración correcta
             if (isNaN(productoIdInt2)) {
                 console.error('El ID del producto no es válido:', productoIdInt2);
                 return;
             }
-    
+
             // Realiza la solicitud POST para enviar la reseña
             const response = await axios.post(`http://127.0.0.1:8000/api/productos/${productoIdInt2}/resenas/`, nuevaReseña);
             console.log("Reseña creada:", response.data);
-    
+
             // Si la reseña fue enviada con éxito
             setReseñaEnviado(true);
             setIsModalOpen(false);
@@ -72,15 +83,11 @@ const ProductoPage = () => {
             setReseñaEnviado(false);
         }
     };
-    
 
     const fetchReseñas = async () => {
-
         try {
-
             const productoIdInt2 = parseInt(productoId, 10);
             const response = await axios.get(`/api/productos/${productoIdInt2}/resenas`);
-
             setReseñas(response.data);
         } catch (error) {
             console.error('Error al obtener las reseñas:', error);
@@ -88,11 +95,21 @@ const ProductoPage = () => {
     };
 
     const handleComprarClick = () => {
+        const user = localStorage.getItem('user');
+        if (!user || user === "") {
+            alert('Debes estar logueado para realizar una compra');
+            return;
+        }
         setIsPaymentModalOpen(true); // Abre el modal de pago
     };
 
     const handleClosePaymentModal = () => {
         setIsPaymentModalOpen(false); // Cierra el modal de pago
+    };
+
+    const handleCantidadChange = (e) => {
+        const nuevaCantidad = Math.max(1, Math.min(producto.stock, e.target.value)); // Limita la cantidad a un mínimo de 1 y al máximo de stock
+        setCantidadCompra(nuevaCantidad);
     };
 
     const handleProcesarPago = async () => {
@@ -101,7 +118,7 @@ const ProductoPage = () => {
             return;
         }
 
-         try {
+        try {
             const nuevoStock = producto.stock - cantidadCompra;
             const productoIdInt3 = parseInt(productoId, 10);
             const productoActualizado = {
@@ -109,14 +126,14 @@ const ProductoPage = () => {
                 stock: nuevoStock,
             };
             await axios.put(`http://127.0.0.1:8000/api/productos/${productoIdInt3}/`, productoActualizado);
-             setProducto(productoActualizado);
+            setProducto(productoActualizado);
             setPagoRealizado(true);
-             setIsPaymentModalOpen(false);
-             setCantidadCompra(1);
+            setIsPaymentModalOpen(false);
+            setCantidadCompra(1);
         } catch (error) {
-             console.error("Error al procesar el pago:", error);
-             setPagoRealizado(false);
-         }
+            console.error("Error al procesar el pago:", error);
+            setPagoRealizado(false);
+        }
     };
 
     useEffect(() => {
@@ -179,13 +196,15 @@ const ProductoPage = () => {
             {reseñas.length > 0 ? (
                 <div className='reseña-item'>
                     <div className="reseñas-section">
-                        <h2>Reseñas</h2>
+                        <h2>Reseña:</h2>
                         {reseñas.map((reseña, index) => (
                             <div key={index} className="reseña">
                                 <p><strong>Usuario:</strong> {reseña.nombre_usuario}</p>
+                                <p><strong>Email:</strong> {reseña.email_usuario}</p>
                                 <p><strong>Calificación:</strong> {reseña.calificacion}/5</p>
                                 <p><strong>Comentario:</strong> {reseña.comentario}</p>
                                 <p><strong>Fecha:</strong> {new Date(reseña.fecha).toLocaleDateString()}</p>
+                                <hr />
                             </div>
                         ))}
                     </div>
@@ -193,7 +212,6 @@ const ProductoPage = () => {
             ) : (
                 <p className="no-reseñas">Aún no hay reseñas para este producto.</p>
             )}
-
 
             {/* Modal de reseña */}
             {isModalOpen && (
@@ -206,7 +224,7 @@ const ProductoPage = () => {
                             <input
                                 type="number"
                                 value={calificacion}
-                                onChange={(e) => setCalificacion(Math.min(5, Math.max(1, e.target.value)))}
+                                onChange={(e) => setCalificacion(e.target.value)}
                                 min="1"
                                 max="5"
                             />
@@ -216,12 +234,9 @@ const ProductoPage = () => {
                             <textarea
                                 value={comentario}
                                 onChange={(e) => setComentario(e.target.value)}
-                                rows="5"
-                                cols="30"
-                                placeholder="Escribe tu reseña aquí..."
                             />
                         </div>
-                        <button className="send-review-button" onClick={handleSendReseña}>Enviar</button>
+                        <button onClick={handleSendReseña}>Enviar Reseña</button>
                     </div>
                 </div>
             )}
@@ -231,25 +246,21 @@ const ProductoPage = () => {
                 <div className="modal-overlay">
                     <div className="modal-content">
                         <button className="modal-close" onClick={handleClosePaymentModal}>X</button>
-                        <h2>Confirmar compra</h2>
-                        <div>
-                            <label>Cantidad:</label>
+                        <h2>Confirmar Compra</h2>
+                        <p><strong>Cantidad:</strong>
                             <input
                                 type="number"
                                 value={cantidadCompra}
-                                onChange={(e) => setCantidadCompra(Math.min(producto.stock, Math.max(1, e.target.value)))}
+                                onChange={handleCantidadChange}
                                 min="1"
-                                max={producto.stock}
+                                max={producto.stock} // Limita la cantidad al stock disponible
                             />
-                        </div>
-                        <p><strong>Total:</strong> ${producto.precio * cantidadCompra}</p>
-                        <button className="send-review-button" onClick={handleProcesarPago}>Pagar</button>
+                        </p>
+                        <p><strong>Precio total:</strong> ${producto.precio * cantidadCompra}</p>
+                        <button onClick={handleProcesarPago}>Procesar pago</button>
                     </div>
                 </div>
             )}
-
-            {reseñaEnviado && <p className="success-message">¡Gracias por tu reseña!</p>}
-            {pagoRealizado && <p className="success-message">¡Compra realizada con éxito!</p>}
 
             <Footer />
         </div>
@@ -257,3 +268,4 @@ const ProductoPage = () => {
 };
 
 export default ProductoPage;
+

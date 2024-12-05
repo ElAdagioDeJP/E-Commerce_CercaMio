@@ -4,64 +4,74 @@ import './Navbar.css'; // Asegúrate de tener los estilos correctos
 
 function Navbar() {
   const navigate = useNavigate(); // Usamos el hook para navegar
-  const [username, setUsername] = useState(null);
+  const [user, setUser] = useState(null); // Estado para almacenar el objeto del usuario
   const [menuVisible, setMenuVisible] = useState(false); // Controla si el menú está visible
 
-  // Verificar si hay un username en el localStorage
+  // Verificar si hay un usuario almacenado en el localStorage
   useEffect(() => {
-    const storedUsername = localStorage.getItem('username');
-    if (storedUsername) {
-      setUsername(storedUsername); // Establecer el username si existe
+    const storedUser = localStorage.getItem('user'); // Obtiene el objeto completo del localStorage
+    if (storedUser) {
+      setUser(JSON.parse(storedUser)); // Parsea y establece el objeto del usuario
     }
   }, []);
 
-  // Función para manejar el clic en el botón
+  // Función para manejar el clic en el botón de iniciar sesión
   const handleClick = () => {
     navigate('/sesion'); // Redirige al componente SesionUsuario
   };
 
+  // Función para manejar el clic en el logo (regresar al inicio)
   const handleBackClick = () => {
     navigate('/'); // Redirige al inicio
   };
 
+  // Función para manejar el clic en "Añadir Producto"
   const handleRegisterProductClick = () => {
     navigate('/CrearProductos'); // Redirige a la página de crear productos
   };
-
-  // Función para manejar el clic en el círculo con la primera letra del username
+  const handlePerfilClick = () => {
+    navigate('/perfil'); // Redirige a la página de crear productos
+  };
+  // Función para alternar la visibilidad del menú desplegable
   const handleUserCircleClick = () => {
-    setMenuVisible(!menuVisible); // Alternar la visibilidad del menú
+    setMenuVisible(!menuVisible); // Alterna la visibilidad del menú
   };
 
   // Función para manejar la opción de salir
   const handleLogout = () => {
-    localStorage.removeItem('username'); // Eliminar username del localStorage
-    setUsername(null); // Restablecer el estado de username
-    setMenuVisible(false); // Ocultar el menú
+    localStorage.clear(); // Elimina todo el contenido del localStorage
+    setUser(null); // Restablece el estado del usuario
+    setMenuVisible(false); // Oculta el menú
+    navigate('/'); // Opcional: Redirige al inicio después de cerrar sesión
   };
 
   return (
     <nav className="navbar">
-      <img src="/image/logopsinf.webp" alt="Logo CercaMio" className="logo" onClick={handleBackClick} />
+      <img
+        src="/image/logopsinf.webp"
+        alt="Logo CercaMio"
+        className="logo"
+        onClick={handleBackClick}
+      />
       <ul className="nav-links">
         <li>
-          <a href="#about" onClick={handleRegisterProductClick}>Sobre mí</a>
+          <a href="#about">Sobre mí</a>
         </li>
         <li>
           <a href="#services">Servicios</a>
         </li>
         <li>
-          {username ? (
+          {user ? (
             <div className="user-container">
               {/* Círculo con la primera letra del username */}
               <div className="user-circle" onClick={handleUserCircleClick}>
-                {username[0].toUpperCase()}
+                {user.username[0].toUpperCase()}
               </div>
               {/* Menú desplegable */}
               {menuVisible && (
                 <div className="dropdown-menu">
                   <ul>
-                    <li onClick={() => navigate('/perfil')}>Perfil</li>
+                    <li onClick={handlePerfilClick}>Perfil</li>
                     <li onClick={handleRegisterProductClick}>Añadir Producto</li>
                     <li onClick={handleLogout}>Salir</li>
                   </ul>
@@ -80,3 +90,4 @@ function Navbar() {
 }
 
 export default Navbar;
+

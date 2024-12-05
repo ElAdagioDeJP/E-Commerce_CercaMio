@@ -7,6 +7,7 @@ import Registro from './Registro'; // Componente para registrar usuarios
 import CrearProducto from './CrearProducto'; // Componente para crear productos
 import CategoriaPage from './CategoriaPage'; // Página para mostrar productos por categoría
 import ProductoPage from './ProductoPage'; // Nueva página para mostrar detalles del producto
+import EditProfile from './EditProfile'; // Componente para editar el perfil del usuario
 
 // Configuración de rutas
 const router = createBrowserRouter([
@@ -32,7 +33,11 @@ const router = createBrowserRouter([
     },
     {
         path: '/producto/:productoId', // Nueva ruta para los detalles del producto
-        element: <ProductoPage />, // Página de detalles del producto
+        element: <ProductoPage />,
+    },
+    {
+        path: '/perfil', // Nueva ruta para editar el perfil del usuario
+        element: <EditProfile />,
     },
 ]);
 

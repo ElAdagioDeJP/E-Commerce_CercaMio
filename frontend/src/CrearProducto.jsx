@@ -74,10 +74,10 @@ const CrearProducto = () => {
             marca: formData.marca,
             imagen: formData.imagen,
             dimensiones: {
-                ancho: formData.dimensiones.ancho,
-                alto: formData.dimensiones.alto,
-                profundidad: formData.dimensiones.profundidad,
-                peso: formData.dimensiones.peso
+                ancho: parseInt(formData.dimensiones.ancho,10),
+                alto: parseInt(formData.dimensiones.alto,10),
+                profundidad: parseInt(formData.dimensiones.profundidad,10),
+                peso: parseInt(formData.dimensiones.peso,10)
             },
             estado_disponibilidad: formData.estado_disponibilidad,
             politica_devolucion: formData.politica_devolucion,
@@ -106,12 +106,14 @@ const CrearProducto = () => {
                 politica_devolucion: 'no',
                 cantidad_minima: 1,
                 sku: generateRandomSku(),
-            });
+            }
+        );
+        useNavigate('/dashboard');
         } catch (error) {
             console.error('Error al crear el producto:', error.response.data);
             alert('Hubo un error al crear el producto.');
         }
-        useNavigate('/');
+        
     };
 
     return (
