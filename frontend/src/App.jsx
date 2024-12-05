@@ -69,7 +69,9 @@ function App() {
           <Navbar /> {/* Aquí se usa el Navbar */}
         </div>
 
-        <div className="background"></div>
+        <div className="background">
+          <image src='./image/fondocercamio.webp' alt="background" />
+        </div>
         
         <div className="main">
           <main>

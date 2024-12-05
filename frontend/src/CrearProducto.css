@@ -16,11 +16,18 @@
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
+
 .titulo {
   text-align: center;
   color: #4A148C;
-  font-size: 2rem;
+  font-size: 1.5rem;
   margin-bottom: 1rem;
+}
+
+.dimensiones {
+  display: flex;
+  
+  gap: 2rem;
 }
 
 .campo {
@@ -31,7 +38,7 @@
 
 .campo label {
   font-weight: bold;
-  font-size: 2rem;
+  font-size: 1rem;
   color: #4A148C;
   margin-bottom: 0.5rem;
 }
@@ -56,14 +63,14 @@
 
 /* Campo mediano */
 .campo.mediano input {
-  width: 50%;
+  width: 90%;
   font-size: 1.2rem;
 }
 
 /* Campo grande para el textarea */
 .campo-grande textarea {
   height: 100px;
-  width: 100%;
+  width: 90%;
   resize: none;
   border-color: #7E57C2;
   outline: none;
@@ -95,7 +102,7 @@
 }
 
 .campo.pequeno input {
-  width: 60px;
+  width: 80px;
 }
 
 .boton {
@@ -126,6 +133,28 @@
   margin-top: -0.5rem;
   margin-bottom: 0.5rem;
   text-align: left;
+}
+select {
+  padding: 0.8rem;
+  border: 1px solid #D1C4E9;
+  border-radius: 6px;
+  font-size: 1rem;
+  background-color: #F8EAF6;
+  color: #4A148C;
+  transition: border-color 0.3s ease;
+}
+.boton-crear-producto{
+  background-color: #7E57C2;
+  color: white;
+  border: none;
+  padding: 0.8rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+  width: 100%;
+  padding-bottom: 1rem;
+
 }
 
   

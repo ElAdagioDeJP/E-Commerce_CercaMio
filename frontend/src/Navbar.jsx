@@ -18,7 +18,7 @@ function Navbar() {
 
   return (
     <nav className="navbar">
-      <img src=".\image\logopsinf.webp" alt="Logo CercaMio" className="logo" onClick={handleBackClick}/>
+      <img src="/image/logopsinf.webp" alt="Logo CercaMio" className="logo" onClick={handleBackClick}/>
       <ul className="nav-links">
         
         <li>
