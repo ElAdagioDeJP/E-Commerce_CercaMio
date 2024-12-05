@@ -29,7 +29,7 @@ const SesionUsuario = () => {
   
     try {
       // Enviar solicitud POST a la API para verificar al usuario
-      const response = await axios.post('http://127.0.0.1:8000/api/usuarios/verificar-usuario/', {
+      const response = await axios.post('http://127.0.0.1:8000/api/usuarios/login/', {
         email,
         password
       });

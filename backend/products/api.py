@@ -1,15 +1,18 @@
 from .models import Producto, Categoria, Resena, Dimensiones, Usuario
-from rest_framework import viewsets , permissions
-from .serializers import ProductoSerializer, CategoriaSerializer, ResenaSerializer, DimensionesSerializer, UsuarioSerializer
+from rest_framework import viewsets, permissions, status
+from .serializers import (
+    ProductoSerializer,
+    CategoriaSerializer,
+    ResenaSerializer,
+    DimensionesSerializer,
+    UsuarioSerializer,
+)
 from django.contrib.auth.hashers import check_password
+from django.contrib.auth import authenticate
 from rest_framework.decorators import action
 from rest_framework.response import Response
-from rest_framework import status
 from rest_framework.views import APIView
-from rest_framework.response import Response
-from rest_framework import status
-from .models import Producto
-from .serializers import ResenaSerializer
+
 
 class ProductoViewSet(viewsets.ModelViewSet):
     queryset = Producto.objects.all()
@@ -49,42 +52,28 @@ class ProductoResenasAPIView(APIView):
         except Producto.DoesNotExist:
             return Response({"error": "Producto no encontrado"}, status=status.HTTP_404_NOT_FOUND)
 
-
 class UsuarioViewSet(viewsets.ModelViewSet):
     queryset = Usuario.objects.all()
-    permission_classes = [
-        permissions.AllowAny
-    ]
+    permission_classes = [permissions.AllowAny]
     serializer_class = UsuarioSerializer
-    @action(detail=False, methods=['post'], url_path='verificar-usuario')
-    def verificar_usuario(self, request):
-        email = request.data.get('email')
-        password = request.data.get('password')
 
+    @action(detail=False, methods=['post'], url_path='login')
+    def login(self, request):
+        """
+        Verifica si un usuario con el email y password existe.
+        """
+        email = request.data.get("email")
+        password = request.data.get("password")
+        
         if not email or not password:
             return Response(
-                {"error": "Se requieren ambos campos: email y password."},
-                status=status.HTTP_400_BAD_REQUEST,
+                {"error": "Email y contraseña son requeridos"},
+                status=status.HTTP_400_BAD_REQUEST
             )
-
-        try:
-            usuario = Usuario.objects.get(email=email)
-        except Usuario.DoesNotExist:
-            return Response(
-                {"error": "Usuario no encontrado."},
-                status=status.HTTP_404_NOT_FOUND,
-            )
-
-        if check_password(password, usuario.password):
-            return Response(
-                {"message": "Usuario autenticado con éxito."},
-                status=status.HTTP_200_OK,
-            )
+        
+        user = authenticate(username=email, password=password)
+        if user:
+            return Response({"message": "Usuario autenticado exitosamente"}, status=status.HTTP_200_OK)
         else:
-            return Response(
-                {"error": "Contraseña incorrecta."},
-                status=status.HTTP_401_UNAUTHORIZED,
-            )
+            return Response({"error": "Usuario no encontrado"}, status=status.HTTP_404_NOT_FOUND)
 
-    
-# Compare this snippet from backend/products/urls.py:

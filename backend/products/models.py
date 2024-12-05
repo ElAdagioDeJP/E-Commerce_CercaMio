@@ -3,6 +3,7 @@ from django.contrib.auth.models import AbstractUser
 from django.core.validators import MinValueValidator, MaxValueValidator
 
 class Usuario(AbstractUser):
+    AbstractUser._meta.get_field('email')._unique = True
     telefono = models.CharField(max_length=20, blank=True, null=True)
     direccion = models.CharField(max_length=255, blank=True, null=True)
     fecha_nacimiento = models.DateField(blank=True, null=True)
@@ -44,7 +45,6 @@ class Producto(models.Model):
     politica_devolucion = models.CharField(max_length=200)
     cantidad_minima = models.PositiveIntegerField()
     sku = models.CharField(max_length=20, unique=True)
-    #vendedor = models.ForeignKey(Usuario, on_delete=models.CASCADE, related_name="productos_ofrecidos")
     fecha_creacion = models.DateTimeField(auto_now_add=True)
     fecha_actualizacion = models.DateTimeField(auto_now=True)
 

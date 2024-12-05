@@ -16,4 +16,5 @@ router.register('api/usuarios', UsuarioViewSet, basename='usuario')
 urlpatterns = [
     path('', include(router.urls)),  # Asegúrate de que todas las rutas estén bajo el prefijo 'api/'
     path('api/productos/<int:producto_id>/resenas/', ProductoResenasAPIView.as_view(), name='producto-resenas'),
+    
 ]
