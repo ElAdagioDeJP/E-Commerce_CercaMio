@@ -51,6 +51,18 @@ class ProductoResenasAPIView(APIView):
             return Response(serializer.data, status=status.HTTP_200_OK)
         except Producto.DoesNotExist:
             return Response({"error": "Producto no encontrado"}, status=status.HTTP_404_NOT_FOUND)
+    def post(self, request, producto_id):
+        try:
+            producto = Producto.objects.get(id=producto_id)
+            data = request.data
+            data["producto"] = producto.id
+            serializer = ResenaSerializer(data=data)
+            if serializer.is_valid():
+                serializer.save()
+                return Response(serializer.data, status=status.HTTP_201_CREATED)
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        except Producto.DoesNotExist:
+            return Response({"error": "Producto no encontrado"}, status=status.HTTP_404_NOT_FOUND)
 
 class UsuarioViewSet(viewsets.ModelViewSet):
     queryset = Usuario.objects.all()
@@ -62,6 +74,7 @@ class UsuarioViewSet(viewsets.ModelViewSet):
         """
         Verifica si un usuario con el email y password existe.
         """
+        print("Login endpoint reached")
         email = request.data.get("email")
         password = request.data.get("password")
         

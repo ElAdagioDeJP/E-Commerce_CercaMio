@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'products',
     'corsheaders',
     'rest_framework',
+    'django_extensions',
     
 ]
 
