@@ -32,6 +32,7 @@ class Categoria(models.Model):
         return self.nombre
 
 class Producto(models.Model):
+    usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE, related_name='productos')
     titulo = models.CharField(max_length=200)
     descripcion = models.TextField()
     precio = models.DecimalField(max_digits=20, decimal_places=2)
