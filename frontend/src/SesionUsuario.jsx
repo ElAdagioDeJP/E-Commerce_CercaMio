@@ -17,7 +17,7 @@ const SesionUsuario = () => {
   const handleEmailChange = (e) => setEmail(e.target.value);
   const handlePasswordChange = (e) => setPassword(e.target.value);
 
-  // Manejar el envío del formulario
+
   const handleLoginClick = async (e) => {
     e.preventDefault();
   
@@ -28,25 +28,29 @@ const SesionUsuario = () => {
     }
   
     try {
-      // Enviar solicitud POST a la API para verificar al usuario
-      const response = await axios.post('http://127.0.0.1:8000/api/usuarios/login/', {
-        email,
-        password
-      });
+      // Enviar solicitud GET a la API y obtener todos los usuarios
+      const response = await axios.get('http://127.0.0.1:8000/api/usuarios/');
+      
+      // Buscar coincidencia en la lista de usuarios
+      const usuario = response.data.find(
+        (user) => user.email === email && user.password === password
+      );
   
-      console.log(response.data);
-      if (response.status === 200 && response.data.message) {
-        alert("Inicio de sesión exitoso.");
-        // Redirigir al dashboard o página principal
-        navigate('/dashboard');
+      if (usuario) {
+        // Guardar el username en el localStorage
+        localStorage.setItem('username', usuario.username); // Guardar username
+        navigate('/');
       } else {
-        alert("Credenciales incorrectas. Por favor, inténtalo de nuevo.");
+        alert("Credenciales incorrectas.");
       }
     } catch (error) {
-      console.error("Error al iniciar sesión:", error.response?.data || error.message);
-      alert("Ocurrió un error durante el inicio de sesión.");
+      console.error("Error al iniciar sesión:", error);
+      alert("Ocurrió un error al iniciar sesión. Por favor, intenta nuevamente.");
     }
   };
+  
+  
+
   
   
 
