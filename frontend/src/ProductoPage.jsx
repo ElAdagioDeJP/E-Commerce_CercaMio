@@ -41,10 +41,9 @@ const ProductoPage = () => {
             alert("El comentario no puede estar vacío.");
             return;
         }
-        
-        
+    
         const nuevaReseña = {
-            producto : productoId,
+            producto: parseInt(productoId, 10),
             calificacionInt: calificacion,
             comentario: comentario,
             fecha: new Date().toISOString(),
@@ -53,9 +52,9 @@ const ProductoPage = () => {
         };
     
         try {
-            const productoIdInt2 = parseInt(productoId, 10);
-            if (isNaN(productoIdInt)) {
-                console.error('El ID del producto no es válido:', productoId);
+            const productoIdInt2 = parseInt(productoId, 10); // Declaración correcta
+            if (isNaN(productoIdInt2)) {
+                console.error('El ID del producto no es válido:', productoIdInt2);
                 return;
             }
     
@@ -81,6 +80,7 @@ const ProductoPage = () => {
 
             const productoIdInt2 = parseInt(productoId, 10);
             const response = await axios.get(`/api/productos/${productoIdInt2}/resenas`);
+
             setReseñas(response.data);
         } catch (error) {
             console.error('Error al obtener las reseñas:', error);
