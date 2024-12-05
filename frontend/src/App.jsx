@@ -70,7 +70,7 @@ function App() {
         </div>
 
         <div className="background">
-          <image src='./image/fondocercamio.webp' alt="background" />
+          <image src='./image/fondocercamio.png' alt="background" />
         </div>
         
         <div className="main">
