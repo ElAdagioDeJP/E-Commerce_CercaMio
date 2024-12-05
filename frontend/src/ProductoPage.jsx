@@ -19,12 +19,21 @@ const ProductoPage = () => {
     const [calificacion, setCalificacion] = useState(0);
     const [comentario, setComentario] = useState('');
     const [reseñaEnviado, setReseñaEnviado] = useState(false);
+    const [usuarioProducto, setUsuarioProducto] = useState(null);
+
     const navigate = useNavigate();
 
     const handleBackClick = () => {
         navigate('/');
     };
-
+    const fetchUsuarioProducto = async (usuarioId) => {
+        try {
+            const response = await axios.get(`http://127.0.0.1:8000/api/usuarios/${usuarioId}/`);
+            setUsuarioProducto(response.data);
+        } catch (error) {
+            console.error("Error al obtener el usuario del producto:", error);
+        }
+    };
     const handleReseñaClick = () => {
         const user = localStorage.getItem('user');
         if (!user || user === "") {
@@ -143,6 +152,12 @@ const ProductoPage = () => {
                 const response = await axios.get(`/api/productos/${productoId}`);
                 setProducto(response.data);
                 fetchReseñas();
+    
+                // Obtener el usuario asociado al producto
+                const usuarioId = response.data.usuario;
+                if (usuarioId) {
+                    await fetchUsuarioProducto(usuarioId);
+                }
             } catch (err) {
                 console.error('Error fetching producto:', err);
                 setError('Error al obtener los detalles del producto');
@@ -150,9 +165,10 @@ const ProductoPage = () => {
                 setLoading(false);
             }
         };
-
+    
         fetchProducto();
     }, [productoId]);
+    
 
     if (loading) return <p className="loading">Cargando...</p>;
     if (error) return <p className="error">{error}</p>;
@@ -164,7 +180,7 @@ const ProductoPage = () => {
             <div className="producto-page">
                 {producto && (
                     <div className="producto-detail">
-                        <div>
+                        <div className='imagen'>
                             <img src={producto.imagen} alt={producto.titulo} />
                         </div>
 
@@ -184,6 +200,9 @@ const ProductoPage = () => {
                                     <li><strong>Peso:</strong> {producto.dimensiones.peso} kg</li>
                                 </ul>
                             </div>
+                            <h3>Información del Vendedor</h3>
+                            <p><strong>Usuario:</strong> {usuarioProducto.username}</p>
+                            <p><strong>Dirección:</strong> {usuarioProducto.direccion}</p>
                             <div className="producto-buttons">
                                 <button className="buy-button" onClick={handleComprarClick}>Comprar</button>
                                 <button className="review-button" onClick={handleReseñaClick}>Reseña</button>
@@ -236,7 +255,7 @@ const ProductoPage = () => {
                                 onChange={(e) => setComentario(e.target.value)}
                             />
                         </div>
-                        <button onClick={handleSendReseña}>Enviar Reseña</button>
+                        <button onClick={handleSendReseña} className='boton-ventana'>Enviar Reseña</button>
                     </div>
                 </div>
             )}
@@ -257,7 +276,7 @@ const ProductoPage = () => {
                             />
                         </p>
                         <p><strong>Precio total:</strong> ${producto.precio * cantidadCompra}</p>
-                        <button onClick={handleProcesarPago}>Procesar pago</button>
+                        <button onClick={handleProcesarPago} className='boton-ventana'>Procesar pago</button>
                     </div>
                 </div>
             )}

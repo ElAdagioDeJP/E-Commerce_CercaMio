@@ -64,6 +64,15 @@ const CrearProducto = () => {
             return;
         }
 
+        // Obtener usuario del localStorage
+        const storedUser = localStorage.getItem('user');
+        const user = storedUser ? JSON.parse(storedUser) : null;
+
+        if (!user || !user.id) {
+            alert('Usuario no encontrado. Por favor, inicia sesión.');
+            return;
+        }
+
         const producto = {
             titulo: formData.titulo,
             descripcion: formData.descripcion,
@@ -74,15 +83,16 @@ const CrearProducto = () => {
             marca: formData.marca,
             imagen: formData.imagen,
             dimensiones: {
-                ancho: parseInt(formData.dimensiones.ancho,10),
-                alto: parseInt(formData.dimensiones.alto,10),
-                profundidad: parseInt(formData.dimensiones.profundidad,10),
-                peso: parseInt(formData.dimensiones.peso,10)
+                ancho: parseInt(formData.dimensiones.ancho, 10),
+                alto: parseInt(formData.dimensiones.alto, 10),
+                profundidad: parseInt(formData.dimensiones.profundidad, 10),
+                peso: parseInt(formData.dimensiones.peso, 10)
             },
             estado_disponibilidad: formData.estado_disponibilidad,
             politica_devolucion: formData.politica_devolucion,
             cantidad_minima: formData.cantidad_minima,
             sku: formData.sku,
+            usuario: user.id, // Añadir el ID del usuario al objeto producto
             fecha_creacion: new Date().toISOString(),
             fecha_actualizacion: new Date().toISOString(),
             resenas: []
@@ -106,14 +116,12 @@ const CrearProducto = () => {
                 politica_devolucion: 'no',
                 cantidad_minima: 1,
                 sku: generateRandomSku(),
-            }
-        );
-        useNavigate('/dashboard');
+            });
+            navigate('/'); // Corrige el uso de `useNavigate` como función
         } catch (error) {
-            console.error('Error al crear el producto:', error.response.data);
+            console.error('Error al crear el producto:', error.response?.data);
             alert('Hubo un error al crear el producto.');
         }
-        
     };
 
     return (

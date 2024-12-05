@@ -244,3 +244,14 @@ textarea, input[type="number"] {
         transform: translateY(0);
     }
 }
+h3 {
+    font-size: 1.5rem;
+    color: #7e57c2;
+    margin-bottom: 10px;
+}
+.imagen{
+   
+    border-radius: 8px;
+    margin-top: 30px;
+    
+}
