@@ -25,6 +25,10 @@ class ResenaSerializer(serializers.ModelSerializer):
         model = Resena
         fields = ['id', 'producto','calificacion', 'comentario', 'fecha', 'nombre_usuario', 'email_usuario']
 
+class ProductoResenaSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Producto
+        fields = ['calificacion', 'comentario', 'fecha', 'nombre_usuario', 'email_usuario']
 
 class ProductoSerializer(serializers.ModelSerializer):
     categoria_id = serializers.PrimaryKeyRelatedField(

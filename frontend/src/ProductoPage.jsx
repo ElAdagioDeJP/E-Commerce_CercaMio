@@ -43,11 +43,10 @@ const ProductoPage = () => {
         }
     
         const nuevaReseña = {
-            producto: parseInt(productoId, 10),
-            calificacionInt: calificacion,
+            calificacion: calificacion,
             comentario: comentario,
             fecha: new Date().toISOString(),
-            nombre_usuario: "Juan23", // Nombre ficticio, reemplázalo por el sistema de autenticación
+            nombre_usuario: "root", // Nombre ficticio, reemplázalo por el sistema de autenticación
             email_usuario: "juan@gmail.com", // Email ficticio
         };
     
@@ -59,7 +58,7 @@ const ProductoPage = () => {
             }
     
             // Realiza la solicitud POST para enviar la reseña
-            const response = await axios.post(`/api/productos/${productoIdInt2}/resenas`, nuevaReseña);
+            const response = await axios.post(`http://127.0.0.1:8000/api/productos/${productoIdInt2}/resenas/`, nuevaReseña);
             console.log("Reseña creada:", response.data);
     
             // Si la reseña fue enviada con éxito
@@ -68,6 +67,7 @@ const ProductoPage = () => {
             setCalificacion(0);
             setComentario('');
         } catch (error) {
+            alert("Ocurrió un error al enviar la reseña. Por favor, inténtalo de nuevo.");
             console.error("Error al crear la reseña:", error.response?.data || error.message);
             setReseñaEnviado(false);
         }
