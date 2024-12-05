@@ -6,20 +6,27 @@ import Footer from './Footer';
 import { useNavigate } from 'react-router-dom';
 
 const CrearProducto = () => {
+    const navigate = useNavigate();
+
+    const generateRandomSku = () => {
+        const length = Math.floor(Math.random() * 5) + 8; // Genera un número entre 8 y 12
+        return Math.floor(Math.random() * Math.pow(10, length)).toString();
+    };
+
     const [formData, setFormData] = useState({
         titulo: '',
         descripcion: '',
         precio: '',
         descuento: '',
         stock: '',
-        categoria_id: 1, // Asegúrate de que el ID de la categoría sea correcto
+        categoria_id: 1,
         marca: '',
         imagen: '',
         dimensiones: { ancho: '', alto: '', profundidad: '', peso: '' },
         estado_disponibilidad: 'disponible',
         politica_devolucion: 'no',
         cantidad_minima: 1,
-        sku: '',
+        sku: generateRandomSku(),
     });
 
     const categorias = [
@@ -35,9 +42,8 @@ const CrearProducto = () => {
     const handleInputChange = (e) => {
         const { id, value } = e.target;
 
-        // Si el campo pertenece a dimensiones, actualizar solo esa propiedad específica
         if (id.includes('dimensiones')) {
-            const dimension = id.split('.')[1]; // "ancho", "alto", "profundidad", "peso"
+            const dimension = id.split('.')[1];
             setFormData({
                 ...formData,
                 dimensiones: {
@@ -53,13 +59,11 @@ const CrearProducto = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        // Validación de campos obligatorios
         if (!formData.titulo || !formData.descripcion || !formData.precio || !formData.stock) {
             alert('Por favor, completa todos los campos.');
             return;
         }
 
-        // Crear el objeto de producto a enviar
         const producto = {
             titulo: formData.titulo,
             descripcion: formData.descripcion,
@@ -85,11 +89,9 @@ const CrearProducto = () => {
         };
 
         try {
-            // Enviar los datos al servidor
             const response = await axios.post('/api/productos/', producto);
             console.log('Producto creado:', response.data);
             alert('Producto creado con éxito.');
-            // Resetear formulario
             setFormData({
                 titulo: '',
                 descripcion: '',
@@ -103,7 +105,7 @@ const CrearProducto = () => {
                 estado_disponibilidad: 'disponible',
                 politica_devolucion: 'no',
                 cantidad_minima: 1,
-                sku: '',
+                sku: generateRandomSku(),
             });
         } catch (error) {
             console.error('Error al crear el producto:', error.response.data);
@@ -256,16 +258,7 @@ const CrearProducto = () => {
                                 <option value="no">No</option>
                             </select>
                         </div>
-                        <div className="campo pequeno">
-                            <label htmlFor="sku">SKU</label>
-                            <input
-                                type="text"
-                                id="sku"
-                                placeholder="SKU"
-                                value={formData.sku}
-                                onChange={handleInputChange}
-                            />
-                        </div>
+                        
                         <div className="campo mediano">
                             <label htmlFor="categoria_id">Categoría</label>
                             <select

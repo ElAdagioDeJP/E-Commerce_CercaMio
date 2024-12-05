@@ -14,7 +14,7 @@ class Usuario(AbstractUser):
         help_text='Los grupos a los que pertenece este usuario.',
         verbose_name='grupos'
     )
-    
+
     user_permissions = models.ManyToManyField(
         'auth.Permission',
         related_name='usuario_set',
@@ -44,9 +44,10 @@ class Producto(models.Model):
     politica_devolucion = models.CharField(max_length=200)
     cantidad_minima = models.PositiveIntegerField()
     sku = models.CharField(max_length=20, unique=True)
+    #vendedor = models.ForeignKey(Usuario, on_delete=models.CASCADE, related_name="productos_ofrecidos")
     fecha_creacion = models.DateTimeField(auto_now_add=True)
     fecha_actualizacion = models.DateTimeField(auto_now=True)
-    
+
     def __str__(self):
         return self.titulo
 
@@ -59,8 +60,8 @@ class Dimensiones(models.Model):
     def __str__(self):
         return f'{self.ancho} x {self.alto} x {self.profundidad}'
     # Aquí se añade related_name para evitar conflictos
-    
-    
+
+
 class Resena(models.Model):
     producto = models.ForeignKey(Producto, on_delete=models.CASCADE, related_name='resenas')
     calificacion = models.PositiveSmallIntegerField(
@@ -77,7 +78,7 @@ class Resena(models.Model):
     def __str__(self):
         return f'{self.calificacion} por {self.nombre_usuario} del producto {self.producto}'
 
-    
+
 
 
 

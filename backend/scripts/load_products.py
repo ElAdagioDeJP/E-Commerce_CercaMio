@@ -17,7 +17,7 @@ del categorias_json
 
 for producto in productos:
     dimensiones = producto.get('dimensions')
-    reseñas = producto.get('reviews')
+    resenas = producto.get('reviews')
     nuevo = Producto(
         titulo = producto['title'],
         descripcion = producto['description'],
@@ -38,12 +38,12 @@ for producto in productos:
         sku = producto['sku']
     )
     nuevo.save()
-    if reseñas is None: break
-    for reseña in reseñas:
-        nuevo.reseñas.create(
-            calificacion = reseña['rating'],
-            comentario = reseña['comment'],
-            fecha = datetime.fromisoformat(reseña['date']),
-            nombre_usuario = reseña['reviewerName'],
-            email_usuario = reseña['reviewerEmail']
+    if resenas is None: break
+    for resena in resenas:
+        nuevo.resenas.create(
+            calificacion = resena['rating'],
+            comentario = resena['comment'],
+            fecha = datetime.fromisoformat(resena['date']),
+            nombre_usuario = resena['reviewerName'],
+            email_usuario = resena['reviewerEmail']
         )
