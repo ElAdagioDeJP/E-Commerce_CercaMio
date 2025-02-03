@@ -4,6 +4,7 @@ body {
   font-family: 'Roboto', sans-serif;
   padding: 0;
   background-color: #FFFAF0;
+  display: block;
 }
 
 /* Fondo de la página */
