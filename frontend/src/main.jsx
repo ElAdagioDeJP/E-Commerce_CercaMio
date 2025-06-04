@@ -8,6 +8,7 @@ import CrearProducto from './CrearProducto'; // Componente para crear productos
 import CategoriaPage from './CategoriaPage'; // Página para mostrar productos por categoría
 import ProductoPage from './ProductoPage'; // Nueva página para mostrar detalles del producto
 import EditProfile from './EditProfile'; // Componente para editar el perfil del usuario
+import Form from './Form'; // Componente para el formulario de contacto o similar
 
 // Configuración de rutas
 const router = createBrowserRouter([
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
     {
         path: '/perfil', // Nueva ruta para editar el perfil del usuario
         element: <EditProfile />,
+    },
+    {
+        path: '/Form',
+        element: <Form />,
     },
 ]);
 

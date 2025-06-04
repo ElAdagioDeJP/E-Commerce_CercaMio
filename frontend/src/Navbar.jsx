@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Navbar.css'; // Asegúrate de tener los estilos correctos
+import './Form.css';
 
 function Navbar() {
   const navigate = useNavigate(); // Usamos el hook para navegar
@@ -29,9 +30,15 @@ function Navbar() {
   const handleRegisterProductClick = () => {
     navigate('/CrearProductos'); // Redirige a la página de crear productos
   };
+  const handlePersolizacion = () => {
+    navigate('/form#services'); // Redirige a la página de crear productos
+  };
   const handlePerfilClick = () => {
     navigate('/perfil'); // Redirige a la página de crear productos
   };
+  const handleFormClick = () => {
+    navigate('/form'); // Redirige a la página de crear productos
+  }	
   // Función para alternar la visibilidad del menú desplegable
   const handleUserCircleClick = () => {
     setMenuVisible(!menuVisible); // Alterna la visibilidad del menú
@@ -55,12 +62,6 @@ function Navbar() {
       />
       <ul className="nav-links">
         <li>
-          <a href="#about">Sobre mí</a>
-        </li>
-        <li>
-          <a href="#services">Servicios</a>
-        </li>
-        <li>
           {user ? (
             <div className="user-container">
               {/* Círculo con la primera letra del username */}
@@ -73,6 +74,7 @@ function Navbar() {
                   <ul>
                     <li onClick={handlePerfilClick}>Perfil</li>
                     <li onClick={handleRegisterProductClick}>Añadir Producto</li>
+                    <li onClick={handlePersolizacion}>Personalizacion</li>
                     <li onClick={handleLogout}>Salir</li>
                   </ul>
                 </div>
