@@ -1,19 +1,101 @@
+/* Paleta personalizada actualizada:
+   Navbar/Footer: #512DA8 (Morado profundo)
+   Fondo general: #F5F3FA (Lavanda muy clara / grisáceo)
+   Tarjetas: #D6C8F1 (Lavanda suave)
+   Botones/acento: #F8BBD0 (Rosa coral pastel)
+   Texto principal: #455A64 (Gris oscuro azulado)
+*/
+
+/* Fondo general */
+body {
+  background-color: #F5F3FA;
+}
+
+/* Fondo de la página */
+.background {
+  background-color: #F5F3FA;
+}
+
+/* Navbar y Footer */
+.navbar,
+.footer {
+  background-color: #512DA8;
+  color: #fff;
+}
+
+/* Sección de categorías */
+.categorias {
+  background-color: #D6C8F1;
+}
+
+.categorias li {
+  background-color: #F5F3FA;
+  color: #455A64;
+}
+
+/* Títulos y textos principales */
+.categorias h2,
+.categorias h3,
+.rectangle-title,
+.product-details h3,
+.product-details p,
+.categorias li,
+.rectangle,
+.square-content {
+  color: #455A64;
+}
+
+.rectangle-title {
+  color: #512DA8;
+}
+
+/* Estilo para los rectángulos */
+.rectangle {
+  background-color: #F5F3FA;
+}
+
+/* Cuadros individuales */
+.square {
+  background-color: #F5F3FA;
+  color: #455A64;
+}
+
+.square-content {
+  color: #455A64;
+}
+
+/* Botón de flecha horizontal y botones generales */
+.toggle-btn,
+button {
+  background-color: #F8BBD0;
+  color: #512DA8;
+}
+
+.toggle-btn:hover,
+button:hover {
+  background-color: #512DA8;
+  color: #fff;
+}
+
 /* Estilos generales */
 body {
   margin: 0;
   font-family: 'Roboto', sans-serif;
   padding: 0;
-  background-color: #FFFAF0;
+  background-color: #F5F3FA;
 }
 
 /* Fondo de la página */
 .background {
-  background-image: url('./image/fondocercamio.webp'); /* Ruta relativa desde 'public' */
-  background-size: cover; /* Escala la imagen para cubrir todo el área */
-  background-position: center; /* Centra la imagen */
+  background-color: #F5F3FA;
   margin-top: 10px;
-  width: 100%; /* Ocupa todo el ancho de la ventana */
-  height: 100vh; /* Ocupa todo el alto de la ventana */
+}
+
+/* Navbar y Footer */
+.navbar,
+.footer {
+  background-color: #7E57C2;
+  color: #fff;
 }
 
 /* Sección principal */
@@ -24,22 +106,21 @@ body {
 
 /* Sección de categorías */
 .categorias {
-  background-color: #b39ddb;
+  background-color: #D6C8F1;
   width: 100%;
   border-radius: 8px;
   display: flex;
-  flex-direction: column; /* Ajustado para organizar contenido en columna */
-  align-items: center; /* Centra los elementos */
-  gap: 20px; /* Espaciado entre elementos */
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   margin-bottom: 30px;
   padding-top: 30px;
   padding-bottom: 30px;
-  
 }
 
 .categorias h2 {
-  color: #ffffff;
+  color: #7E57C2;
   font-size: 50px;
   font-weight: bold;
   text-transform: uppercase;
@@ -57,7 +138,7 @@ body {
 }
 
 .categorias li {
-  background-color: #f5f5f5;
+  background-color: #F5F3FA; /* Usa el color de fondo base para los cuadrados */
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   width: 200px;
@@ -67,6 +148,7 @@ body {
   transition: transform 0.3s ease;
   margin-right: 30px;
   cursor: pointer;
+  color: #455A64;
 }
 
 .categorias li:hover {
@@ -75,7 +157,7 @@ body {
 
 .categorias h3 {
   font-size: 18px;
-  color: #333;
+  color: #455A64;
   margin: 10px 0;
 }
 
@@ -83,6 +165,28 @@ body {
   width: 100%;
   height: auto;
   border-radius: 5px;
+}
+
+/* Títulos y textos principales */
+.categorias h2,
+.categorias h3,
+.rectangle-title,
+.product-details h3,
+.product-details p,
+.categorias li,
+.rectangle,
+.square-content {
+  color: #455A64;
+}
+
+.rectangle-title {
+  color: #7E57C2;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 
 /* Contenedor de los rectángulos */
@@ -98,27 +202,14 @@ body {
 .rectangle {
   width: 100%;
   height: 200px;
-  background-color: #b39ddb;
+  background-color: #D6C8F1;
   display: flex;
-
   position: relative;
   padding: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   flex-direction: column;
   padding-top: 30px;
-  
-}
-
-/* Título en la parte superior izquierda */
-.rectangle-title {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  font-size: 16px;
-  color: #ffffff;
-  font-weight: bold;
-  text-transform: uppercase;
 }
 
 /* Contenedor de los cuadros */
@@ -132,7 +223,6 @@ body {
   
 }
 
-/* Los cuadros */
 .square-wrapper {
   display: flex;
   transition: transform 0.5s ease;
@@ -141,36 +231,31 @@ body {
 .square {
   width: 150px;
   height: 150px;
-  background-color: #FFFAF0;
+  background-color: #F5F3FA; /* Usa el color de fondo base para los cuadrados */
   margin-right: 15px;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 8px;
   position: relative;
-  flex-shrink: 0; /* Evita que los cuadrados se reduzcan de tamaño */
+  flex-shrink: 0;
   transition: transform 0.3s ease;
   cursor: pointer;
+  color: #455A64;
 }
 .square:hover {
   transform: translateY(-5px);
 }
-/* Contenedor del nombre y precio dentro del cuadrado */
+
 .square-content {
   margin-top: 15px;
   bottom: 5px;
   left: 5px;
-  color: white;
+  color: #455A64;
   font-size: 14px;
   text-align: center;
   justify-content: center;
   align-items: center;
-  
-}
-
-/* Mover los cuadros a la derecha cuando se da click en la flecha */
-.square-wrapper.move-right {
-  transform: translateX(-50%);
 }
 
 /* Botón de flecha horizontal */
@@ -180,8 +265,8 @@ body {
   top: 50%;
   transform: translateY(-50%);
   padding: 5px 10px;
-  background-color: #ffffff;
-  color: #7e57c2;
+  background-color: #F8BBD0;
+  color: #7E57C2;
   border: none;
   border-radius: 50%;
   cursor: pointer;
@@ -189,7 +274,8 @@ body {
 }
 
 .toggle-btn:hover {
-  background-color: #f3f3f3;
+  background-color: #7E57C2;
+  color: #fff;
 }
 
 /* Estilos para los productos dentro de los cuadrados */
@@ -201,13 +287,11 @@ body {
 }
 
 .product-image {
-  
   width: 50%;
   height: 50%;
   object-fit: cover;
   border-radius: 8px;
   align-self: center;
-
 }
 
 .product-details {
@@ -218,10 +302,22 @@ body {
 .product-details h3 {
   font-size: 16px;
   margin-bottom: 5px;
-  color:  #171717;
+  color: #455A64;
 }
 
 .product-details p {
   font-size: 14px;
-  color: #171717;
+  color: #455A64;
 }
+
+/* Footer */
+.footer {
+  background-color: #7E57C2;
+  color: #fff;
+  text-align: center;
+  padding: 20px 0;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+ 

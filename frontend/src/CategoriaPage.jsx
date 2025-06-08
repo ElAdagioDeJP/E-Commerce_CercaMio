@@ -51,7 +51,7 @@ const CategoriaPage = () => {
                         <div className="productos-container">
                             {productos.length > 0 ? (
                                 productos.map((producto) => (
-                                    <Link
+                                    <p
                                         key={producto.id}
                                         to={`/producto/${producto.id}`}
                                         className="producto-card"
@@ -59,7 +59,7 @@ const CategoriaPage = () => {
                                         <img src={producto.imagen} alt={producto.titulo} />
                                         <h3>{producto.titulo}</h3>
                                         <p>${producto.precio}</p>
-                                    </Link>
+                                    </p>
                                 ))
                             ) : (
                                 <p>No hay productos disponibles en esta categoría.</p>

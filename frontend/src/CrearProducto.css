@@ -1,32 +1,36 @@
 /* src/pages/CrearProducto.css */
+/* Paleta:
+   Navbar/Footer: #512DA8 (Morado profundo)
+   Fondo general: #F5F3FA (Lavanda muy clara / grisáceo)
+   Tarjetas: #D6C8F1 (Lavanda suave)
+   Botones/acento: #F8BBD0 (Rosa coral pastel)
+   Texto principal: #455A64 (Gris oscuro azulado)
+*/
+
 .hoja {
   display: flex;
   justify-content: center;
   align-items: center;
-  
-  background-color: #f3e5f5; /* Fondo de la página */
+  background-color: #F5F3FA; /* Fondo general */
 }
 
 .crear-producto-container {
-  
   margin: 30px;
   padding: 2rem;
-  background-color: #E1BEE7;
+  background-color: #D6C8F1; /* Tarjeta */
   border-radius: 8px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 0px 10px #D6C8F1;
 }
-
 
 .titulo {
   text-align: center;
-  color: #4A148C;
+  color: #512DA8; /* Morado profundo */
   font-size: 1.5rem;
   margin-bottom: 1rem;
 }
 
 .dimensiones {
   display: flex;
-  
   gap: 2rem;
 }
 
@@ -39,26 +43,26 @@
 .campo label {
   font-weight: bold;
   font-size: 1rem;
-  color: #4A148C;
+  color: #512DA8; /* Morado profundo */
   margin-bottom: 0.5rem;
 }
 
 .campo input,
 .campo textarea {
   padding: 0.8rem;
-  border: 1px solid #D1C4E9;
+  border: 1px solid #D6C8F1;
   border-radius: 6px;
   font-size: 1rem;
-  background-color: #F8EAF6;
-  color: #4A148C;
+  background-color: #F5F3FA; /* Fondo general */
+  color: #455A64; /* Texto principal */
   transition: border-color 0.3s ease;
 }
 
 .campo input:focus,
 .campo textarea:focus {
-  border-color: #7E57C2;
+  border-color: #512DA8;
   outline: none;
-  box-shadow: 0 0 5px rgba(126, 87, 194, 0.5);
+  box-shadow: 0 0 5px #512DA8;
 }
 
 /* Campo mediano */
@@ -72,29 +76,27 @@
   height: 100px;
   width: 90%;
   resize: none;
-  border-color: #7E57C2;
+  border-color: #512DA8;
   outline: none;
-  box-shadow: 0 0 5px rgba(126, 87, 194, 0.5);
+  box-shadow: 0 0 5px #512DA8;
   border-radius: 6px;
   transition: border-color 0.3s ease;
-  background-color: #F8EAF6;
-  color: #4A148C;
+  background-color: #F5F3FA;
+  color: #455A64;
   font-size: 1.2rem;
 }
 
-.campo-grande label{
+.campo-grande label {
   font-weight: bold;
   font-size: 2rem;
-  color: #4A148C;
+  color: #512DA8;
   margin-bottom: 1.2rem;
-
 }
 
 /* Estilo para inputs pequeños alineados */
 .campo-doble {
   display: flex;
   gap: 1rem;
-
 }
 
 .campo-doble .campo {
@@ -105,56 +107,44 @@
   width: 80px;
 }
 
-.boton {
-  background-color: #7E57C2;
-  color: white;
+.boton,
+.boton-crear-producto {
+  background-color: #F8BBD0 !important; /* Rosa coral pastel */
+  color: #512DA8 !important;            /* Morado profundo */
   border: none;
   padding: 0.8rem;
   border-radius: 6px;
   cursor: pointer;
   font-size: 1rem;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, color 0.3s;
   width: 100%;
   padding-bottom: 1rem;
+  font-weight: bold;
 }
 
-.boton:hover {
-  background-color: #6A1B9A;
+.boton:hover,
+.boton:active,
+.boton-crear-producto:hover,
+.boton-crear-producto:active {
+  background-color: #512DA8 !important; /* Morado profundo */
+  color: #F5F3FA !important;            /* Lavanda muy clara */
 }
 
-.boton:active {
-  background-color: #4A148C;
-}
-
-/* Estilo para texto de error o validación (opcional) */
 .error-message {
-  color: #D32F2F;
+  color: #F8BBD0; /* Rosa coral pastel */
   font-size: 0.9rem;
   margin-top: -0.5rem;
   margin-bottom: 0.5rem;
   text-align: left;
 }
+
 select {
   padding: 0.8rem;
-  border: 1px solid #D1C4E9;
+  border: 1px solid #D6C8F1;
   border-radius: 6px;
   font-size: 1rem;
-  background-color: #F8EAF6;
-  color: #4A148C;
+  background-color: #F5F3FA;
+  color: #455A64;
   transition: border-color 0.3s ease;
 }
-.boton-crear-producto{
-  background-color: #7E57C2;
-  color: white;
-  border: none;
-  padding: 0.8rem;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 1rem;
-  transition: background-color 0.3s;
-  width: 100%;
-  padding-bottom: 1rem;
 
-}
-
-  

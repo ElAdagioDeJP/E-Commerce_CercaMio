@@ -1,27 +1,27 @@
-
+/* Paleta:
+   Navbar/Footer: #512DA8 (Morado profundo)
+   Fondo general: #F5F3FA (Lavanda muy clara / grisáceo)
+   Tarjetas: #D6C8F1 (Lavanda suave)
+   Botones/acento: #F8BBD0 (Rosa coral pastel)
+   Texto principal: #455A64 (Gris oscuro azulado)
+*/
 
 /* General Container */
 .login-container {
-  
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;  
-  
-  
+  height: 100%;
 }
-
-
 
 /* Card */
 .login-card {
   margin-top: 20px;
-  background-color: #E1BEE7;  
-  /* Fondo del cuadro */
+  background-color: #D6C8F1;  /* Tarjeta: Lavanda suave */
   padding-left: 2rem;
   padding-right: 4rem;
   border-radius: 12px;
-  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 8px 15px #D6C8F1;
   text-align: center;
   width: 120%;
   max-width: 500px;
@@ -35,7 +35,6 @@
     opacity: 0;
     transform: translateY(-10px);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);
@@ -44,19 +43,17 @@
 
 /* Title */
 .login-title {
-  color: #4A148C;
-  /* Texto principal */
+  color: #512DA8; /* Morado profundo */
   font-size: 2.5rem;
   font-weight: bold;
   margin-bottom: 1.5rem;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  text-shadow: 1px 1px 2px #D6C8F1;
 }
 
 /* Labels */
 .login-label {
   display: block;
-  color: #4A148C;
-  /* Texto principal */
+  color: #512DA8; /* Morado profundo */
   font-weight: 600;
   margin-bottom: 0.5rem;
   font-size: 1rem;
@@ -68,40 +65,36 @@
   width: 100%;
   padding: 0.75rem;
   margin-bottom: 1.2rem;
-  border: 1px solid #D1C4E9;
+  border: 1px solid #D6C8F1;
   border-radius: 6px;
-  background-color: #F8EAF6;
-  /* Fondo de los inputs */
+  background-color: #F5F3FA; /* Fondo de los inputs */
   font-size: 1rem;
-  color: #4A148C;
+  color: #455A64; /* Texto principal */
   transition: border-color 0.3s ease;
 }
 
 .login-input:focus {
-  border-color: #7E57C2;
-  /* Border en foco */
+  border-color: #512DA8; /* Morado profundo */
   outline: none;
-  box-shadow: 0px 0px 4px rgba(126, 87, 194, 0.5);
+  box-shadow: 0px 0px 4px #512DA8;
 }
 
 /* Buttons */
 .login-button {
-  background-color: #7E57C2;
-  /* Fondo del botón */
-  color: #FFFFFF;
-  /* Texto del botón */
+  background-color: #F8BBD0; /* Rosa coral pastel */
+  color: #512DA8;            /* Morado profundo */
   padding: 0.8rem 1.5rem;
   border: none;
   border-radius: 6px;
   font-size: 1rem;
   font-weight: bold;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease, color 0.3s;
 }
 
 .login-button:hover {
-  background-color: #6A1B9A;
-  /* Hover del botón */
+  background-color: #512DA8; /* Morado profundo */
+  color: #F5F3FA;            /* Lavanda muy clara */
   transform: scale(1.05);
 }
 

@@ -1,5 +1,12 @@
+/* Paleta:
+   Navbar/Footer: #512DA8 (Morado profundo)
+   Fondo general: #F5F3FA (Lavanda muy clara / grisáceo)
+   Tarjetas: #D6C8F1 (Lavanda suave)
+   Botones/acento: #F8BBD0 (Rosa coral pastel)
+   Texto principal: #455A64 (Gris oscuro azulado)
+*/
 
-/* General Container */
+  /* General Container */
 .login-container {
     display: flex;
     justify-content: center;
@@ -11,62 +18,91 @@
   
   /* Card */
 .login-card {
-    background-color: #E1BEE7; /* Fondo del cuadro */
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    width: 100%;
-    max-width: 400px;
-  }
-  
-  /* Title */
-.login-title {
-    color: #4A148C; /* Texto principal */
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
-  }
-  
-  /* Labels */
-.login-label {
-    display: block;
-    color: #4A148C; /* Texto principal */
-    font-weight: bold;
-    margin-bottom: 0.5rem;
-
-  }
-  
-  /* Inputs */
-.login-input {
-  margin-bottom: 1rem;
-  display: block;
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
-  width: 100%;
-  border: 1px solid #F8EAF6;
-  border-radius: 4px;
-  background-color: #F8EAF6; /* Fondo de los inputs */
-  font-size: 1rem;
-  color: #4A148C;
+  margin-top: 20px;
+  background-color: #D6C8F1;  /* Tarjeta: Lavanda suave */
+  padding-left: 2rem;
+  padding-right: 4rem;
+  border-radius: 12px;
+  box-shadow: 0px 8px 15px #D6C8F1;
+  text-align: center;
+  width: 120%;
+  max-width: 500px;
+  animation: fadeIn 0.5s ease-in-out;
+  margin: 30px;
 }
-  
-  /* Button */
+
+/* Animación */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Title */
+.login-title {
+  color: #512DA8; /* Morado profundo */
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  text-shadow: 1px 1px 2px #D6C8F1;
+}
+
+/* Labels */
+.login-label {
+  display: block;
+  color: #512DA8; /* Morado profundo */
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  text-align: left;
+}
+
+/* Inputs */
+.login-input {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1.2rem;
+  border: 1px solid #D6C8F1;
+  border-radius: 6px;
+  background-color: #F5F3FA; /* Fondo de los inputs */
+  font-size: 1rem;
+  color: #455A64; /* Texto principal */
+  transition: border-color 0.3s ease;
+}
+
+.login-input:focus {
+  border-color: #512DA8; /* Morado profundo */
+  outline: none;
+  box-shadow: 0px 0px 4px #512DA8;
+}
+
+/* Buttons */
 .login-button {
-    background-color: #7E57C2; /* Fondo del botón */
-    color: #FFFFFF; /* Texto del botón */
-    padding: 0.75rem 1.5rem;
-    border: none;
-    border-radius: 4px;
-    font-size: 1rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin: 1rem;
-  }
-  
+  background-color: #F8BBD0; /* Rosa coral pastel */
+  color: #512DA8;            /* Morado profundo */
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease, color 0.3s;
+}
+
 .login-button:hover {
-    background-color: #6A1B9A; /* Hover del botón */
-  }
+  background-color: #512DA8; /* Morado profundo */
+  color: #F5F3FA;            /* Lavanda muy clara */
+  transform: scale(1.05);
+}
+
+.login-button:active {
+  transform: scale(0.98);
+}
   
   /* Footer */
 .login-footer {
@@ -84,5 +120,4 @@
 .login-link:hover {
     text-decoration: underline;
   }
-  
-  
+

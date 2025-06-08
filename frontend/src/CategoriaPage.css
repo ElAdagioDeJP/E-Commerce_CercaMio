@@ -1,13 +1,16 @@
 /* Estilos generales para la página de categoría */
 .categoria-page {
-    background-color: #FFFAF0;
+    background-color: #F5F3FA; /* Fondo general: Lavanda muy clara / grisáceo */
     padding: 20px;
     font-family: 'Roboto', sans-serif;
+}
+p{
+    color: #455A64; /* Texto principal: Gris oscuro azulado */
 }
 
 /* Título de la categoría */
 .categoria-page h1 {
-    color: #7e57c2;
+    color: #512DA8; /* Morado profundo */
     font-size: 2.5rem;
     font-weight: bold;
     margin-bottom: 30px;
@@ -38,10 +41,10 @@
 
 /* Tarjetas de productos */
 .producto-card {
-    background-color: #ffffff;
+    background-color: #D6C8F1; /* Tarjetas: Lavanda suave */
     border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    width: calc(25% - 20px); /* Ajusta el ancho para que quepan 4 tarjetas en una fila */
+    box-shadow: 0 4px 6px #D6C8F1;
+    width: calc(25% - 20px);
     max-width: 200px;
     padding: 15px;
     text-align: center;
@@ -51,7 +54,7 @@
 
 .producto-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 6px 10px #F8BBD0; /* Botones/acento: Rosa coral pastel */
 }
 
 /* Imagen del producto */
@@ -65,7 +68,7 @@
 /* Título del producto */
 .producto-card h3 {
     font-size: 1.2rem;
-    color: #333;
+    color: #455A64; /* Texto principal: Gris oscuro azulado */
     margin-bottom: 10px;
     text-transform: capitalize;
 }
@@ -73,14 +76,14 @@
 /* Precio del producto */
 .producto-card p {
     font-size: 1rem;
-    color: #7e57c2;
+    color: #512DA8; /* Morado profundo */
     font-weight: bold;
 }
 
 /* Mensaje de error */
 .categoria-page .error {
     font-size: 1.2rem;
-    color: #d32f2f;
+    color: #F8BBD0; /* Botones/acento: Rosa coral pastel */
     font-weight: bold;
     text-align: center;
 }
@@ -88,7 +91,7 @@
 /* Mensaje de "no productos disponibles" */
 .categoria-content p {
     font-size: 1.1rem;
-    color: #555;
+    color: #455A64; /* Texto principal */
     font-style: italic;
     text-align: center;
     width: 100%;
@@ -101,10 +104,9 @@
     align-items: center;
     margin: 20px 0;
     padding: 20px;
-    background-color: #ffffff;
+    background-color: #D6C8F1; /* Tarjetas: Lavanda suave */
     border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px #D6C8F1;
 }
 
 
-  

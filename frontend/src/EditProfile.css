@@ -1,3 +1,11 @@
+/* Paleta:
+   Navbar/Footer: #512DA8 (Morado profundo)
+   Fondo general: #F5F3FA (Lavanda muy clara / grisáceo)
+   Tarjetas: #D6C8F1 (Lavanda suave)
+   Botones/acento: #F8BBD0 (Rosa coral pastel)
+   Texto principal: #455A64 (Gris oscuro azulado)
+*/
+
 /* General Container */
 .edit-profile-container {
     display: flex;
@@ -5,104 +13,103 @@
     align-items: center;
     height: 100%;
     padding: 20px;
-    background-color: #F3E5F5; /* Fondo suave */
-  }
-  
-  /* Card */
-  .edit-profile-card {
-    background-color: #E1BEE7;  /* Fondo del cuadro */
+    background-color: #F5F3FA; /* Fondo general */
+}
+
+/* Card */
+.edit-profile-card {
+    background-color: #D6C8F1;  /* Tarjeta */
     padding: 2rem 3rem;
     border-radius: 12px;
-    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 8px 15px #D6C8F1;
     text-align: center;
     width: 100%;
     max-width: 600px;
     animation: fadeIn 0.5s ease-in-out;
     margin: 30px;
-  }
-  
-  /* Animación */
-  @keyframes fadeIn {
+}
+
+/* Animación */
+@keyframes fadeIn {
     from {
       opacity: 0;
       transform: translateY(-10px);
     }
-  
     to {
       opacity: 1;
       transform: translateY(0);
     }
-  }
-  
-  /* Title */
-  .edit-profile-title {
-    color: #4A148C;
+}
+
+/* Title */
+.edit-profile-title {
+    color: #512DA8; /* Morado profundo */
     font-size: 2.5rem;
     font-weight: bold;
     margin-bottom: 2rem;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-  }
-  
-  /* Labels */
-  .edit-profile-label {
+    text-shadow: 1px 1px 2px #D6C8F1;
+}
+
+/* Labels */
+.edit-profile-label {
     display: block;
-    color: #4A148C;
+    color: #512DA8; /* Morado profundo */
     font-weight: 600;
     margin-bottom: 0.5rem;
     font-size: 1rem;
     text-align: left;
-  }
-  
-  /* Inputs */
-  .edit-profile-input {
+}
+
+/* Inputs */
+.edit-profile-input {
     width: 100%;
     padding: 0.75rem;
     margin-bottom: 1.2rem;
-    border: 1px solid #D1C4E9;
+    border: 1px solid #D6C8F1;
     border-radius: 6px;
-    background-color: #F8EAF6; /* Fondo de los inputs */
+    background-color: #F5F3FA; /* Fondo general */
     font-size: 1rem;
-    color: #4A148C;
+    color: #455A64; /* Texto principal */
     transition: border-color 0.3s ease;
-  }
-  
-  .edit-profile-input:focus {
-    border-color: #7E57C2;
+}
+
+.edit-profile-input:focus {
+    border-color: #512DA8; /* Morado profundo */
     outline: none;
-    box-shadow: 0px 0px 4px rgba(126, 87, 194, 0.5);
-  }
-  
-  /* Buttons */
-  .edit-profile-button {
-    background-color: #7E57C2; /* Fondo del botón */
-    color: #FFFFFF; /* Texto del botón */
-    padding: 0.8rem 1.5rem;
+    box-shadow: 0px 0px 4px #512DA8;
+}
+
+/* Buttons */
+.edit-profile-button {
+    background-color: #F8BBD0 !important; /* Rosa coral pastel */
+    color: #512DA8 !important;            /* Morado profundo */
     border: none;
+    padding: 0.8rem 1.5rem;
     border-radius: 6px;
     font-size: 1rem;
     font-weight: bold;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-  }
-  
-  .edit-profile-button:hover {
-    background-color: #6A1B9A; /* Hover del botón */
+    transition: background-color 0.3s, color 0.3s, transform 0.2s ease;
+}
+
+.edit-profile-button:hover {
+    background-color: #512DA8 !important; /* Morado profundo */
+    color: #F5F3FA !important;            /* Lavanda muy clara */
     transform: scale(1.05);
-  }
-  
-  .edit-profile-button:active {
+}
+
+.edit-profile-button:active {
     transform: scale(0.98);
-  }
-  
-  /* Form Layout */
-  .edit-profile-form {
+}
+
+/* Form Layout */
+.edit-profile-form {
     display: flex;
     flex-direction: column;
     gap: 1.5rem; /* Espacio entre inputs */
     align-items: stretch; /* Para que los inputs se estiren al 100% */
-  }
-  
-  .edit-profile-form label {
+}
+
+.edit-profile-form label {
     text-align: left; /* Asegura que las etiquetas estén a la izquierda */
-  }
-  
+}

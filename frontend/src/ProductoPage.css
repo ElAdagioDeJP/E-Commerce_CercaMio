@@ -1,64 +1,73 @@
+/* Paleta:
+   Navbar/Footer: #512DA8 (Morado profundo)
+   Fondo general: #F5F3FA (Lavanda muy clara / grisáceo)
+   Tarjetas: #D6C8F1 (Lavanda suave)
+   Botones/acento: #F8BBD0 (Rosa coral pastel)
+   Texto principal: #455A64 (Gris oscuro azulado)
+*/
+
 /* Contenedor principal de la página de producto */
 .producto-page {
-    background-color: #FFFAF0;
+    background-color: #F5F3FA; /* Fondo general */
     padding: 20px;
     font-family: 'Roboto', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh; /* Asegura que el contenedor ocupe al menos la altura de la pantalla */
+    min-height: 100vh;
     flex-direction: column;
 }
 
 /* Contenedor principal de los detalles del producto */
 .producto-detail {
-    background-color: #ffffff;
+    background-color: #D6C8F1; /* Tarjeta */
     display: flex;
-    justify-content: flex-start; /* Alinea todo al principio */
+    justify-content: flex-start;
     align-items: flex-start;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px #D6C8F1;
     border-radius: 8px;
-    width: 90%; /* Limita el ancho */
+    width: 90%;
     max-width: 1200px;
     padding: 20px;
     margin: 20px 0;
-    overflow: hidden; /* Evita el desbordamiento */
+    overflow: hidden;
 }
 
 /* Estilo de la imagen */
-.producto-detail img {
-    max-width: 450px; /* Imagen más grande */
+.producto-detail img, .imagen {
+    max-width: 450px;
     height: auto;
     border-radius: 8px;
-    margin-right: 40px; /* Mayor espacio entre la imagen y la información */
+    margin-right: 40px;
+    margin-top: 30px;
 }
 
 /* Contenedor de la información del producto */
 .producto-info {
-    flex: 2; /* Aumenta el tamaño de la columna de información */
+    flex: 2;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    gap: 15px; /* Aumenta el espacio entre los párrafos */
-    height: 100%; /* Para que ocupe el alto completo disponible */
+    gap: 15px;
+    height: 100%;
 }
 
 /* Título del producto */
 .producto-info h1 {
     font-size: 2.5rem;
     font-weight: bold;
-    color: #7e57c2;
+    color: #512DA8; /* Morado profundo */
     margin-bottom: 10px;
 }
 
 /* Contenedor de los párrafos en fila */
 .producto-info p {
     font-size: 1.1rem;
-    color: #333;
+    color: #455A64; /* Texto principal */
     margin: 5px 0;
-    display: inline-block; /* Hace que los párrafos estén uno al lado del otro */
-    margin-right: 30px; /* Espacio entre los párrafos */
-    white-space: nowrap; /* Evita que los párrafos se rompan */
+    display: inline-block;
+    margin-right: 30px;
+    white-space: nowrap;
 }
 
 /* Estilo para los botones de compra y reseña */
@@ -70,30 +79,21 @@
 
 .buy-button,
 .review-button {
+    background-color: #F8BBD0; /* Rosa coral pastel */
+    color: #512DA8;            /* Morado profundo */
     padding: 12px 25px;
     font-size: 1.1rem;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s, color 0.3s;
+    font-weight: bold;
 }
 
-.buy-button {
-    background-color: #4CAF50; /* Verde */
-    color: white;
-}
-
-.buy-button:hover {
-    background-color: #45a049;
-}
-
-.review-button {
-    background-color: #FFD700; /* Amarillo */
-    color: white;
-}
-
+.buy-button:hover,
 .review-button:hover {
-    background-color: #ffcc00;
+    background-color: #512DA8; /* Morado profundo */
+    color: #F5F3FA;            /* Lavanda muy clara */
 }
 
 /* Estilo para la lista de dimensiones */
@@ -101,30 +101,129 @@
     list-style-type: none;
     padding: 0;
     display: flex;
-    flex-wrap: wrap; /* Para que las dimensiones se acomoden bien */
+    flex-wrap: wrap;
 }
 
 .producto-info ul li {
     font-size: 1rem;
-    color: #555;
+    color: #455A64; /* Texto principal */
     margin-bottom: 5px;
-    margin-right: 20px; /* Espacio entre las dimensiones */
+    margin-right: 20px;
 }
 
 .producto-info strong {
     font-weight: bold;
-    color: #7e57c2;
+    color: #512DA8; /* Morado profundo */
 }
 
 /* Cargando y error */
 .loading, .error {
     text-align: center;
     font-size: 1.2rem;
-    color: #d32f2f;
+    color: #F8BBD0; /* Rosa coral pastel */
     font-weight: bold;
 }
 
-/* Asegura que la página no baje demasiado en dispositivos pequeños */
+/* Modal */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(81, 45, 168, 0.2); /* Morado profundo con transparencia */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: #D6C8F1; /* Tarjeta */
+    padding: 30px;
+    border-radius: 8px;
+    width: 500px;
+    text-align: left;
+    position: relative;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.modal-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    border: none;
+    background: none;
+    color: #512DA8; /* Morado profundo */
+}
+
+textarea, input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #512DA8;
+    border-radius: 4px;
+    font-size: 1rem;
+    margin-top: 10px;
+    background: #F5F3FA;
+    color: #455A64;
+}
+
+.send-review-button {
+    background-color: #F8BBD0;
+    color: #512DA8;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: background-color 0.3s, color 0.3s;
+    font-weight: bold;
+}
+
+.send-review-button:hover {
+    background-color: #512DA8;
+    color: #F5F3FA;
+}
+
+.success-message {
+    text-align: center;
+    color: #512DA8; /* Morado profundo */
+    font-size: 1.2rem;
+    margin-top: 20px;
+}
+
+.modal-content h2,
+.modal-content label,
+h3 {
+    font-size: 1.5rem;
+    color: #512DA8; /* Morado profundo */
+    margin-bottom: 10px;
+}
+
+.reseña-item {
+    background-color: #F5F3FA; /* Fondo general */
+    border: 1px solid #D6C8F1; /* Tarjeta */
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 4px #D6C8F1;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10%);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive */
 @media (max-width: 768px) {
     .producto-detail {
         flex-direction: column;
@@ -144,114 +243,13 @@
         flex-direction: column;
     }
 }
-/* Estilos para el modal */
-.modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro semitransparente */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-}
 
-.modal-content {
-    background-color: white;
-    padding: 30px;
-    border-radius: 8px;
-    width: 500px;
-    text-align: left;
-    position: relative;
+.customizer-form button[type="submit"] {
+  background: #F8BBD0 !important;
+  color: #512DA8 !important;
+  /* ...otros estilos... */
 }
-
-.modal-close {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 20px;
-    cursor: pointer;
-    border: none;
-    background: none;
-}
-
-textarea, input[type="number"] {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 1rem;
-    margin-top: 10px;
-}
-
-.send-review-button {
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 1rem;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 15px;
-}
-
-.send-review-button:hover {
-    background-color: #45a049;
-}
-
-.success-message {
-    text-align: center;
-    color: green;
-    font-size: 1.2rem;
-    margin-top: 20px;
-}
-.modal-content h2{
-    font-size: 1.5rem;
-    color: #7e57c2;
-    margin-bottom: 10px;
-}
-.modal-content label{
-    font-size: 1.1rem;
-    color: #7e57c2;
-    margin: 5px 0;
-    display: inline-block;
-    margin-right: 30px;
-    white-space: nowrap;
-}
-
-.reseña-item {
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    padding: 15px;
-    border-radius: 8px;
-    margin-bottom: 15px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.modal-content {
-    animation: fadeIn 0.3s ease-in-out;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-10%);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-h3 {
-    font-size: 1.5rem;
-    color: #7e57c2;
-    margin-bottom: 10px;
-}
-.imagen{
-   
-    border-radius: 8px;
-    margin-top: 30px;
-    
+.customizer-form button[type="submit"]:hover {
+  background: #512DA8 !important;
+  color: #F5F3FA !important;
 }

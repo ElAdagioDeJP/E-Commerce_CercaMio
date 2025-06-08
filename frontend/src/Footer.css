@@ -1,6 +1,6 @@
 .footer {
-    background-color: #4A148C; /* Color de fondo */
-    color: #FFFFFF; /* Color del texto */
+    background-color: #512DA8; /* Morado profundo */
+    color: #F5F3FA; /* Lavanda muy clara / grisáceo */
     text-align: center;
     padding: 1rem;
     position: relative;
@@ -16,6 +16,7 @@
   .footer-text {
     margin: 0;
     font-size: 1rem;
+    color: #F5F3FA; /* Lavanda muy clara / grisáceo */
   }
   
   .footer-links {
@@ -23,12 +24,17 @@
   }
   
   .footer-link {
-    color: #BB86FC; /* Color de los enlaces */
+    color: #F8BBD0; /* Rosa coral pastel */
     text-decoration: none;
     margin: 0 0.5rem;
+    transition: color 0.3s;
   }
   
   .footer-link:hover {
+    color: #D6C8F1; /* Lavanda suave */
     text-decoration: underline;
   }
   
+  .footer p {
+    color: #F8BBD0; /* Rosa coral pastel para mejor contraste */
+  }

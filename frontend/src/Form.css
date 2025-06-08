@@ -1,3 +1,8 @@
+/* Cambia el fondo general */
+body, .customizer-container {
+  background: #F5F3FA; /* Fondo general: Lavanda muy clara / grisáceo */
+}
+
 /* Contenedor principal en dos columnas */
 .customizer-container {
   display: grid;
@@ -9,13 +14,14 @@
 
 /* Columna izquierda: formulario */
 .customizer-form {
-  background: #f4f6fa;
+  background: #D6C8F1; /* Tarjetas: Lavanda suave */
   padding: 2rem 1.5rem;
   border-radius: 12px;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
   min-width: 320px;
+  color: #455A64; /* Texto principal */
 }
 
 /* Columna derecha: preview y historial */
@@ -28,12 +34,12 @@
 
 /* Preview */
 .preview-box {
-  background: #fff;
+  background: #D6C8F1; /* Tarjetas: Lavanda suave */
   border-radius: 12px;
   padding: 1rem 1.2rem;
-  color: #222;
+  color: #455A64; /* Texto principal */
   min-height: 120px;
-  box-shadow: 0 2px 8px #0001;
+  box-shadow: 0 2px 8px #D6C8F1;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -41,12 +47,13 @@
 
 /* Historial */
 .history-box {
-  background: #fff;
-  border: 1px dashed #ccc;
+  background: #D6C8F1; /* Tarjetas: Lavanda suave */
+  border: 1px dashed #512DA8; /* Morado profundo */
   border-radius: 12px;
   padding: 1.2rem 1.2rem 0.5rem 1.2rem;
   min-height: 180px;
   overflow-y: auto;
+  color: #455A64; /* Texto principal */
 }
 
 .history-grid {
@@ -140,20 +147,47 @@ input[type="text"], input[type="number"] {
   font-size: 1rem;
 }
 
+/* Títulos */
+h2, .preview-box h2, .history-box h2 {
+  color: #512DA8; /* Morado profundo */
+}
+
+/* Botones */
 button[type="submit"], .history-box button {
-  background: #b39ddb;
-  color: white;
+  background: #F8BBD0; /* Botones/acento: Rosa coral pastel */
+  color: #512DA8;      /* Morado profundo */
   border: none;
   border-radius: 6px;
   padding: 0.5rem 1.2rem;
   margin-top: 8px;
   cursor: pointer;
   font-size: 1rem;
-  transition: background 0.2s;
+  transition: background 0.2s, color 0.2s;
+  font-weight: bold;
 }
 
 button[type="submit"]:hover, .history-box button:hover {
-  background: #7e57c2;
+  background: #512DA8; /* Morado profundo */
+  color: #F5F3FA;      /* Lavanda muy clara / grisáceo */
+}
+
+/* Solo el botón guardar del formulario principal */
+.customizer-form button[type="submit"] {
+  background: #F8BBD0 !important; /* Rosa coral pastel */
+  color: #512DA8 !important;      /* Morado profundo */
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem 1.2rem;
+  margin-top: 8px;
+  cursor: pointer;
+  font-size: 1.3rem;
+  font-weight: bold;
+  transition: background 0.2s, color 0.2s;
+}
+
+.customizer-form button[type="submit"]:hover {
+  background: #512DA8 !important; /* Morado profundo */
+  color: #F5F3FA !important;      /* Lavanda muy clara / grisáceo */
 }
 
 @media (max-width: 900px) {
