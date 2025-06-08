@@ -1,9 +1,9 @@
-import './App.css';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import axios from 'axios';
+import './App.css';
 
 function App() {
   const navigate = useNavigate(); // Usamos el hook para navegar
@@ -110,15 +110,14 @@ function App() {
             </div>
 
             <div className="rectangles-container">
-              {/* Pasamos los productos más nuevos como prop al rectángulo */}
-              <Rectangle key={0} title="Mas nuevos" productos={productosMasNuevos} />
-              <Rectangle key={1} title="Tecnologia" productos={productotecnologia} />
-              <Rectangle key={2} title="Auto" productos={productoauto}/>
-              <Rectangle key={3} title="Hogar e Inmuebles" productos={productohogar} />
-              <Rectangle key={4} title="Alimentos" productos={productosalimentos} />
-              <Rectangle key={5} title="Ropa" productos={productoropa} />
-              <Rectangle key={6} title="Deportes" productos={productodeportes} />
-              <Rectangle key={7} title="Otros" productos={productosOtros}/>
+              <Carousel title="Mas nuevos" productos={productosMasNuevos} />
+              <Carousel title="Tecnologia" productos={productotecnologia} />
+              <Carousel title="Auto" productos={productoauto} />
+              <Carousel title="Hogar e Inmuebles" productos={productohogar} />
+              <Carousel title="Alimentos" productos={productosalimentos} />
+              <Carousel title="Ropa" productos={productoropa} />
+              <Carousel title="Deportes" productos={productodeportes} />
+              <Carousel title="Otros" productos={productosOtros} />
             </div>
           </main>
         </div>
@@ -129,54 +128,99 @@ function App() {
   );
 }
 
-function Rectangle({ title, productos = [] }) {
-  const [showMore, setShowMore] = useState(false);
-  const navigate = useNavigate(); // Usamos el hook useNavigate aquí
+// Carrusel para productos
+function Carousel({ title, productos = [] }) {
+  const [current, setCurrent] = useState(0);
+  const [productosCarrusel, setProductosCarrusel] = useState(productos);
+  const navigate = useNavigate();
+  const itemsToShow = 7;
+
+  useEffect(() => {
+    setProductosCarrusel(productos);
+    setCurrent(0);
+  }, [productos]);
+
+  const total = productosCarrusel.length;
+  const maxIndex = Math.max(0, total - itemsToShow);
+
+  const handlePrev = () => {
+    if (current > 0) {
+      setCurrent((prev) => prev - 1);
+    } else if (total > itemsToShow) {
+      // Mueve el último elemento al inicio
+      const nuevosProductos = [
+        productosCarrusel[productosCarrusel.length - 1],
+        ...productosCarrusel.slice(0, productosCarrusel.length - 1),
+      ];
+      setProductosCarrusel(nuevosProductos);
+      // current se mantiene igual para mostrar el nuevo grupo
+    }
+  };
+
+  const handleNext = () => {
+    if (current < maxIndex) {
+      setCurrent((prev) => prev + 1);
+    } else if (total > itemsToShow) {
+      // Mueve el primer elemento al final
+      const nuevosProductos = [
+        ...productosCarrusel.slice(1),
+        productosCarrusel[0],
+      ];
+      setProductosCarrusel(nuevosProductos);
+      // current se mantiene igual para mostrar el nuevo grupo
+    }
+  };
 
   const handleProductClick = (productoId) => {
-    navigate(`/producto/${productoId}`); // Redirige a la página del producto con el productoId
+    navigate(`/producto/${productoId}`);
   };
 
   return (
     <div className="rectangle">
       <div className="rectangle-title">{title}</div>
-
-      {productos.length > 0 ? (
-        <div className="products-container">
-          <div className="square-container">
-            <div className={`square-wrapper ${showMore ? 'move-right' : ''}`}>
-              {productos.map((producto) => (
-                <div
-                  key={producto.id}
-                  className="square"
-                  onClick={() => handleProductClick(producto.id)} // Clic en el producto
-                >
-                  <div className="square-content">
-                    <img
-                      src={producto.imagen}
-                      alt={producto.titulo}
-                      className="product-image"
-                    />
-                    <div className="product-details">
-                      <h3>{producto.titulo}</h3>
-                      <p>${producto.precio}</p>
-                    </div>
+      {productosCarrusel.length > 0 ? (
+        <div className="carousel-outer">
+          <button
+            className="carousel-btn carousel-btn-left"
+            onClick={handlePrev}
+            disabled={productosCarrusel.length <= itemsToShow}
+          >
+            &#8592;
+          </button>
+          <div className="carousel-products">
+            {productosCarrusel.slice(current, current + itemsToShow).map((producto) => (
+              <div
+                key={producto.id}
+                className="square"
+                onClick={() => handleProductClick(producto.id)}
+              >
+                <div className="square-content">
+                  <img
+                    src={producto.imagen}
+                    alt={producto.titulo}
+                    className="product-image"
+                  />
+                  <div className="product-details">
+                    <h3>{producto.titulo}</h3>
+                    <p>${producto.precio}</p>
                   </div>
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
+          <button
+            className="carousel-btn carousel-btn-right"
+            onClick={handleNext}
+            disabled={productosCarrusel.length <= itemsToShow}
+          >
+            &#8594;
+          </button>
         </div>
       ) : (
         <p>No hay productos disponibles.</p>
       )}
-
-      <button className="toggle-btn" onClick={() => setShowMore(!showMore)}>
-        {showMore ? '←' : '→'}
-      </button>
     </div>
   );
 }
-
 
 export default App;
